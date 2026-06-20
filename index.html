@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="When Gods Came Home – The Story Behind The Images That Shaped A Nation's Imagination. A lecture by Cobalt Blue Foundation. 27 June 2026.">
+<title>When Gods Came Home | Cobalt Blue Foundation</title>
+
+<link rel="icon" type="image/png" href="cbf-logo.png">
+<meta name="theme-color" content="#180800">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="When Gods Came Home | Cobalt Blue Foundation">
+<meta property="og:description" content="The Story Behind The Images That Shaped A Nation's Imagination. A lecture by Cobalt Blue Foundation — 27 June 2026, live via Zoom.">
+<meta property="og:image" content="cbf-logo.png">
+<meta property="og:url" content="https://your-username.github.io/your-repo-name/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="When Gods Came Home | Cobalt Blue Foundation">
+<meta name="twitter:description" content="The Story Behind The Images That Shaped A Nation's Imagination. 27 June 2026 · Live via Zoom.">
+<meta name="twitter:image" content="cbf-logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+  });
+</script>
+
+<style>
+:root{
+  --parch:#F0DEB4;--parch-l:#FAF3E0;--parch-d:#E2CB95;
+  --brown:#2A0E00;--brown-m:#6B3020;--brown-s:#9C5030;
+  --gold:#C4892A;--gold-l:#D4A93A;--gold-d:#A0701A;
+  --orange:#E05500;--cream:#FDF6E8;
+  --dark:#180800;--dark-s:#2C1000;
+  --fd:'Playfair Display',Georgia,serif;
+  --fh:'Cormorant Garamond',Georgia,serif;
+  --fb:'EB Garamond',Georgia,serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--parch);color:var(--brown);font-family:var(--fb);font-size:1.05rem;line-height:1.75;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.6}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:.4s}
+.nav.on{background:rgba(24,8,0,.95);backdrop-filter:blur(14px);padding:12px 48px;border-bottom:1px solid rgba(196,137,42,.25)}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-logo-img{width:40px;height:40px;object-fit:contain;display:block;flex-shrink:0;transition:.3s}
+.nav.on .nav-logo-img{width:32px;height:32px}
+.nav-brand{font-family:var(--fd);font-size:.9rem;color:#fff;line-height:1.2}
+.nav-brand small{display:block;font-family:var(--fb);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.nav-btn{background:var(--orange);color:#fff;padding:10px 26px;font-family:var(--fb);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:.3s;border:2px solid var(--orange)}
+.nav-btn:hover{background:transparent;color:var(--orange)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--dark);position:relative;overflow:hidden}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:130px 64px 80px;position:relative;z-index:2}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';height:1px;background:var(--gold);width:36px}
+.hero-eyebrow span{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-family:var(--fb)}
+.hero-title{font-family:var(--fd);font-size:clamp(3.2rem,5.5vw,6rem);font-weight:900;color:var(--parch-l);line-height:.92;letter-spacing:-.01em;margin-bottom:20px}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-family:var(--fh);font-size:clamp(.95rem,1.4vw,1.2rem);color:rgba(240,222,176,.65);font-style:italic;font-weight:300;margin-bottom:36px;line-height:1.55}
+.hero-rule{width:56px;height:1px;background:linear-gradient(to right,var(--gold),transparent);margin-bottom:28px}
+.hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:32px}
+.meta-item{border-left:2px solid rgba(196,137,42,.4);padding-left:14px}
+.meta-l{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.meta-v{font-family:var(--fh);font-size:.95rem;color:var(--parch-l);font-weight:500}
+.hero-pricing{background:rgba(196,137,42,.08);border:1px solid rgba(196,137,42,.25);padding:18px 22px;margin-bottom:36px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.price-pill{text-align:center;min-width:80px}
+.price-pill-t{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,222,176,.55)}
+.price-pill-v{font-family:var(--fh);font-size:1.6rem;color:var(--parch-l);font-weight:600;line-height:1.1}
+.price-pill-n{font-size:.6rem;color:var(--gold)}
+.price-sep{width:1px;height:46px;background:rgba(196,137,42,.25);flex-shrink:0}
+.seats-tag{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(224,85,0,.35);color:var(--orange);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;margin-left:auto}
+.seats-tag::before{content:'●';animation:blink 1.5s infinite;font-size:.45rem}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.btn-hero{background:var(--orange);color:#fff;padding:15px 38px;text-decoration:none;font-family:var(--fb);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;border:2px solid var(--orange);transition:.3s;position:relative;overflow:hidden}
+.btn-hero::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:.4s}
+.btn-hero:hover::before{transform:translateX(0)}
+.btn-hero span{position:relative;z-index:1}
+.btn-ghost{font-family:var(--fh);font-style:italic;color:var(--gold);text-decoration:none;font-size:1rem;display:flex;align-items:center;gap:8px;transition:.3s}
+.btn-ghost::after{content:'↓';font-style:normal;transition:.3s}
+.btn-ghost:hover{color:var(--parch-l)}
+.btn-ghost:hover::after{transform:translateY(4px)}
+.scroll-cue{position:absolute;bottom:40px;left:64px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.scroll-cue span{font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(240,222,176,.3);writing-mode:vertical-rl}
+.scroll-line{width:1px;height:56px;background:linear-gradient(to bottom,rgba(196,137,42,.5),transparent);animation:scrl 2s ease-in-out infinite}
+@keyframes scrl{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.65)}}
+
+/* HERO VISUAL */
+.logo-img{
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+  transition: all .3s ease;
+}
+.hero-logo{
+  width: 140px;
+  max-width: 40vw;
+  height: auto;
+  display: block;
+  margin: 0 auto 28px;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.3));
+}
+.hero-visual{position:relative;overflow:hidden}
+.hv-bg{position:absolute;inset:0;background:linear-gradient(145deg,#3D1500 0%,#1A0800 55%,#0D0400 100%)}
+.hv-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 35% 65%,rgba(196,137,42,.18) 0%,transparent 60%),radial-gradient(ellipse at 75% 25%,rgba(224,85,0,.12) 0%,transparent 50%)}
+.hv-frame{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68%;aspect-ratio:3/4;border:2.5px solid rgba(196,137,42,.5)}
+.hv-frame::before{content:'';position:absolute;inset:9px;border:1px solid rgba(196,137,42,.18)}
+.hv-corner{position:absolute;width:18px;height:18px;border-style:solid;border-color:var(--gold)}
+.hv-corner.tl{top:-3px;left:-3px;border-width:3px 0 0 3px}
+.hv-corner.tr{top:-3px;right:-3px;border-width:3px 3px 0 0}
+.hv-corner.bl{bottom:-3px;left:-3px;border-width:0 0 3px 3px}
+.hv-corner.br{bottom:-3px;right:-3px;border-width:0 3px 3px 0}
+.hv-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center}
+.hv-quote{font-family:var(--fh);font-style:italic;font-size:clamp(.85rem,1.3vw,1.1rem);color:rgba(240,222,176,.75);line-height:1.85;margin-bottom:18px}
+.hv-title{font-family:var(--fd);font-size:clamp(1.4rem,2.2vw,1.9rem);color:var(--gold);font-weight:700;line-height:1.1;margin-bottom:18px}
+.hv-rule{font-size:.7rem;color:rgba(196,137,42,.5);letter-spacing:.5em;margin-bottom:16px}
+.hv-sub{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(196,137,42,.55);font-family:var(--fb);line-height:1.8}
+.hv-glow2{position:absolute;bottom:18%;left:50%;transform:translateX(-50%);width:100px;height:100px;background:radial-gradient(circle,rgba(255,200,80,.3) 0%,rgba(224,85,0,.12) 45%,transparent 70%);border-radius:50%;animation:flicker 3.5s ease-in-out infinite alternate}
+@keyframes flicker{0%{transform:translateX(-50%) scale(1);opacity:.7}100%{transform:translateX(-50%) scale(1.35);opacity:1}}
+#pts{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+
+.hero-poster{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:68%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:20px;
+  border:2px solid rgba(196,137,42,.45);
+  box-shadow:0 24px 70px rgba(0,0,0,.45);
+  z-index:1;
+}
+
+/* SECTION BASE */
+.sec{padding:clamp(60px,8vw,110px) clamp(20px,5vw,80px)}
+.sh{text-align:center;margin-bottom:56px}
+.sh-lbl{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px}
+.sh-ttl{font-family:var(--fd);font-size:clamp(2rem,3.8vw,3.4rem);color:var(--brown);margin-bottom:18px}
+.sh-ttl.lt{color:var(--parch-l)}
+.sh-div{width:72px;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto}
+.orn{text-align:center;color:var(--gold);font-size:.75rem;letter-spacing:.45em;opacity:.55;margin:16px 0}
+
+/* WHY ATTEND */
+.why-sec{background:var(--parch-l)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px}
+.why-card{background:var(--dark-s);padding:46px 28px;text-align:center;transition:.4s;position:relative;overflow:hidden;cursor:default}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:.4s}
+.why-card:hover{background:var(--dark)}
+.why-card:hover::before{transform:scaleX(1)}
+.wc-n{font-family:var(--fd);font-size:3rem;color:rgba(196,137,42,.12);font-weight:900;line-height:1;margin-bottom:14px}
+.wc-v{font-family:var(--fd);font-size:1.25rem;color:var(--gold);margin-bottom:10px}
+.wc-t{font-family:var(--fh);font-style:italic;font-size:.92rem;color:rgba(240,222,176,.65)}
+
+/* STORY */
+.story-sec{background:var(--dark);position:relative;overflow:hidden}
+.story-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:20vw;font-weight:900;color:rgba(196,137,42,.025);white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
+.story-wrap{max-width:780px;margin:0 auto;position:relative;z-index:1}
+.story-p{font-family:var(--fh);font-size:clamp(1.2rem,2.2vw,1.85rem);color:rgba(240,222,176,.45);line-height:1.65;margin-bottom:20px;font-style:italic}
+.story-p.hl{color:var(--parch-l);font-size:clamp(1.4rem,2.6vw,2.2rem)}
+.story-p.em{color:var(--gold)}
+.story-p.lg{text-align:center;font-size:clamp(1.5rem,2.8vw,2.5rem);color:var(--gold);font-weight:600}
+.story-p.cen{text-align:center;color:var(--parch-l);font-size:clamp(1.1rem,1.8vw,1.5rem)}
+
+/* DISCOVER */
+.disc-sec{background:var(--parch)}
+.disc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px}
+.disc-card{border:1px solid rgba(92,42,16,.2);padding:34px 26px;background:var(--parch-l);position:relative;transition:.4s;cursor:default}
+.disc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--orange),var(--gold));transform:scaleX(0);transform-origin:left;transition:.4s}
+.disc-card:hover{background:#fff;box-shadow:0 10px 48px rgba(42,14,0,.1);transform:translateY(-5px)}
+.disc-card:hover::after{transform:scaleX(1)}
+.dc-n{font-family:var(--fd);font-size:3.8rem;font-weight:900;color:rgba(196,137,42,.13);line-height:1;margin-bottom:10px}
+.dc-t{font-family:var(--fd);font-size:1.15rem;color:var(--brown);margin-bottom:8px}
+.dc-sub{font-style:normal;font-size:.88rem;color:var(--brown-m)}
+
+/* WHO ATTENDS */
+.who-sec{background:var(--dark-s)}
+.aud-grid{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:52px}
+.aud-tag{border:1px solid rgba(196,137,42,.3);padding:18px 30px;color:var(--parch-l);font-family:var(--fh);font-size:1.05rem;transition:.4s;cursor:default;position:relative}
+.aud-tag::before{content:'✦';position:absolute;top:-8px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:.65rem;background:var(--dark-s);padding:0 6px;opacity:0;transition:.3s}
+.aud-tag:hover{background:rgba(196,137,42,.1);border-color:var(--gold);color:var(--gold)}
+.aud-tag:hover::before{opacity:1}
+
+/* ABOUT */
+.about-sec{background:var(--parch-l)}
+.about-grid{display:grid;grid-template-columns:220px 1fr;gap:72px;align-items:start;max-width:1150px;margin:0 auto}
+.about-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:24px}
+.about-logo-circle{width:150px;height:150px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(196,137,42,.25);overflow:hidden;box-shadow:0 4px 32px rgba(42,14,0,.1)}
+.about-logo-circle .logo-img{
+  width:78%;
+  height:78%;
+  object-fit:contain;
+}
+.pillar{padding:6px 13px;border:1px solid rgba(92,42,16,.28);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brown-m)}
+.pillar-wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.about-txt h2{font-family:var(--fd);font-size:clamp(1.8rem,3.2vw,2.8rem);color:var(--brown);margin-bottom:20px}
+.about-txt p{color:var(--brown-m);margin-bottom:18px;font-size:1rem}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;padding-top:44px;border-top:1px solid rgba(92,42,16,.14)}
+.as-label{font-family:var(--fd);font-size:1.1rem;color:var(--orange);margin-bottom:6px}
+.as-sub{font-size:.72rem;color:var(--brown-m);line-height:1.5}
+
+/* TEAM */
+.team-sec{background:var(--dark)}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1100px;margin:0 auto}
+.team-card{border:1px solid rgba(196,137,42,.15);padding:36px;display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:start;transition:.4s}
+.team-card:hover{border-color:rgba(196,137,42,.4);background:rgba(196,137,42,.03)}
+.ti-role{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ti-name{font-family:var(--fd);font-size:clamp(1.1rem,1.8vw,1.5rem);color:var(--parch-l);margin-bottom:6px}
+.ti-desig{font-family:var(--fh);font-style:italic;color:var(--gold-d);font-size:.85rem;margin-bottom:14px}
+.ti-bio{font-size:.87rem;color:rgba(240,222,176,.58);line-height:1.7}
+
+/* EVENT DETAILS (museum invitation) */
+.evt-sec{background:var(--parch);text-align:center}
+.museum-inv{max-width:680px;margin:0 auto;padding:56px 72px;border:2px solid rgba(92,42,16,.28);background:var(--parch-l);position:relative}
+.museum-inv::before{content:'';position:absolute;inset:10px;border:1px solid rgba(92,42,16,.13);pointer-events:none}
+.mi-header{font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:28px}
+.mi-title{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,3rem);color:var(--brown);margin-bottom:6px}
+.mi-sub{font-family:var(--fh);font-style:italic;font-size:1rem;color:var(--brown-m);margin-bottom:40px}
+.mi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:28px 0;border-top:1px solid rgba(92,42,16,.14);border-bottom:1px solid rgba(92,42,16,.14);margin-bottom:32px}
+.mi-item-l{font-size:.52rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.mi-item-v{font-family:var(--fd);font-size:.95rem;color:var(--brown);font-weight:600;line-height:1.4}
+.mi-note{font-family:var(--fh);font-style:italic;color:var(--brown-m);font-size:.88rem;margin-bottom:28px}
+
+/* REGISTRATION */
+.reg-sec{background:var(--dark);text-align:center}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;max-width:1000px;margin:52px auto}
+.pc{border:1px solid rgba(196,137,42,.28);padding:44px 32px;position:relative;transition:.4s;background:rgba(196,137,42,.03)}
+.pc.feat{border-color:var(--gold);background:rgba(196,137,42,.07)}
+.pc.feat::before{content:'MOST POPULAR';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:.52rem;letter-spacing:.2em;padding:4px 14px;font-family:var(--fb);white-space:nowrap}
+.pc:hover{transform:translateY(-6px);border-color:var(--gold)}
+.pc-type{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.pc-amt{font-family:var(--fd);font-size:3.5rem;font-weight:700;color:var(--parch-l);line-height:1;margin-bottom:6px}
+.pc-amt sup{font-size:1.8rem}
+.pc-amt-combo{display:flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap}
+.pc-amt-old{font-family:var(--fh);font-size:1.5rem;font-style:italic;color:rgba(240,222,176,.4);text-decoration:line-through;text-decoration-color:rgba(224,85,0,.6)}
+.pc-amt-live{font-family:var(--fd);font-size:3.5rem;font-weight:700;color:var(--parch-l);line-height:1}
+.pc-amt-live sup{font-size:1.8rem}
+.pc-list{margin:28px 0;text-align:left}
+.pc-list li{list-style:none;padding:9px 0;border-bottom:1px solid rgba(196,137,42,.1);color:rgba(240,222,176,.68);font-size:.88rem;display:flex;align-items:center;gap:10px}
+.pc-list li::before{content:'—';color:var(--gold);flex-shrink:0}
+.pc-note{font-size:.78rem;font-style:italic;color:rgba(196,137,42,.65);margin-bottom:28px}
+.btn-reg{display:block;padding:15px;background:var(--orange);color:#fff;text-decoration:none;font-family:var(--fb);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;border:2px solid var(--orange);transition:.3s}
+.btn-reg:hover{background:transparent;color:var(--orange)}
+.btn-reg.ol{background:transparent;border-color:rgba(196,137,42,.35);color:var(--gold)}
+.btn-reg.ol:hover{background:rgba(196,137,42,.1);border-color:var(--gold)}
+.team-img{
+  width:100%;
+  max-width:320px;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:24px;
+  border:1px solid rgba(196,137,42,.35);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+/* FINAL CTA */
+.fcta-sec{background:var(--dark);padding:clamp(80px,12vw,150px) clamp(20px,5vw,80px);text-align:center;position:relative;overflow:hidden}
+.fcta-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 90%,rgba(196,137,42,.14) 0%,transparent 60%);pointer-events:none}
+.fcta-q{font-family:var(--fh);font-style:italic;font-size:clamp(1.1rem,2.2vw,1.7rem);color:rgba(240,222,176,.55);max-width:580px;margin:0 auto 16px;line-height:1.65}
+.fcta-q2{font-family:var(--fh);font-style:italic;font-size:clamp(.9rem,1.5vw,1.2rem);color:rgba(240,222,176,.38);margin-bottom:40px}
+.fcta-title{font-family:var(--fd);font-size:clamp(2.8rem,6.5vw,5.5rem);color:var(--parch-l);margin-bottom:40px;line-height:.9}
+.fcta-title em{color:var(--gold)}
+.btn-fcta{display:inline-block;padding:18px 56px;background:var(--orange);color:#fff;text-decoration:none;font-family:var(--fb);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;border:2px solid var(--orange);transition:.3s;position:relative;overflow:hidden}
+.btn-fcta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:.4s}
+.btn-fcta:hover::before{transform:translateX(0)}
+.btn-fcta span{position:relative;z-index:1}
+.fcta-meta{color:rgba(240,222,176,.25);font-size:.65rem;margin-top:22px;letter-spacing:.1em}
+
+/* FOOTER */
+.footer{background:#0C0400;padding:56px clamp(20px,5vw,80px) 28px;border-top:1px solid rgba(196,137,42,.18)}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(196,137,42,.1)}
+.fl-logo{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.fl-logo-circ{width:58px;height:58px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.fl-brand{font-family:var(--fd);font-size:.92rem;color:var(--parch-l);line-height:1.3}
+.fl-brand small{display:block;font-family:var(--fb);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.fl-tag{font-family:var(--fh);font-style:italic;color:rgba(240,222,176,.4);font-size:.88rem}
+.fc-ttl{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.fc-links{list-style:none;display:flex;flex-direction:column;gap:11px}
+.fc-links a{color:rgba(240,222,176,.55);text-decoration:none;font-size:.88rem;transition:.3s;display:flex;align-items:center;gap:8px}
+.fc-links a:hover{color:var(--gold)}
+.footer-bot{max-width:1200px;margin:26px auto 0;display:flex;justify-content:space-between;align-items:center;color:rgba(240,222,176,.25);font-size:.7rem}
+
+/* UTILITIES */
+.rev {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: all 0.6s ease;
+}
+body.loaded .rev {
+  opacity: 1;
+  transform: none;
+}
+.ornline{display:flex;align-items:center;gap:14px;margin:14px 0}
+.ornline::before,.ornline::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.ornline-s{color:var(--gold);font-size:.65rem}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-visual,.scroll-cue{display:none}
+  .hero-content{min-height:100vh;padding:120px 40px 80px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .about-logo-wrap{flex-direction:row}
+  .team-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav{padding:16px 20px}
+  .nav.on{padding:12px 20px}
+  .hero-content{padding:110px 24px 70px}
+  .hero-meta{grid-template-columns:1fr}
+  .museum-inv{padding:36px 22px}
+  .mi-grid{grid-template-columns:1fr 1fr}
+  .team-card{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:36px}
+  .footer-bot{flex-direction:column;gap:8px;text-align:center}
+  .about-stats{grid-template-columns:1fr;gap:20px}
+}
+@media(max-width:480px){
+  .hero-pricing{gap:14px}
+  .price-sep{display:none}
+  .seats-tag{margin-left:0}
+  .mi-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .pc-amt-combo{gap:10px}
+  .pc-amt-old{font-size:1.2rem}
+  .pc-amt-live{font-size:2.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-logo">
+    <img src="cbf-logo.png" alt="Cobalt Blue Foundation" class="nav-logo-img">
+    <div class="nav-brand">
+      Cobalt Blue Foundation
+      <small>Art · Culture · Heritage</small>
+    </div>
+  </a>
+
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="nav-btn">
+    Reserve Your Seat
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-content">
+    <img src="cbf-logo.png" alt="Cobalt Blue Foundation" class="hero-logo">
+    <div class="hero-eyebrow"><span>Cobalt Blue Foundation Presents</span></div>
+
+    <h1 class="hero-title">WHEN<br><em>GODS</em><br>CAME HOME</h1>
+
+    <p class="hero-sub">SOME IMAGES CHANGE ART.<br>SOME CHANGE A CIVILISATION.</p>
+
+    <div class="hero-rule"></div>
+    <div class="hero-meta">
+      <div class="meta-item"><div class="meta-l">Date</div><div class="meta-v">27 June 2026</div></div>
+      <div class="meta-item"><div class="meta-l">Time</div><div class="meta-v">4:00 PM – 5:00 PM IST</div></div>
+      <div class="meta-item"><div class="meta-l">Format</div><div class="meta-v">Live via Zoom</div></div>
+      <div class="meta-item"><div class="meta-l">Hosted By</div><div class="meta-v">Cobalt Blue Foundation</div></div>
+    </div>
+    <div class="hero-pricing">
+      <div class="price-pill">
+        <div class="price-pill-t">Student Pass</div>
+        <div class="price-pill-v">FREE</div>
+        <div class="price-pill-n">+ ₹299 Certificate</div>
+      </div>
+      <div class="price-sep"></div>
+      <div class="price-pill">
+        <div class="price-pill-t">Adult Pass</div>
+        <div class="price-pill-v">₹99</div>
+        <div class="price-pill-n">Full Access</div>
+      </div>
+      <div class="price-sep"></div>
+      <div class="seats-tag">Limited Seats</div>
+    </div>
+    <div class="hero-actions">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-hero"><span>Reserve Your Seat</span></a>
+      <a href="#story" class="btn-ghost">Discover The Story</a>
+    </div>
+    <div class="scroll-cue"><div class="scroll-line"></div><span>Scroll</span></div>
+  </div>
+
+  <!-- RIGHT VISUAL -->
+  <div class="hero-visual">
+    <div class="hv-bg"></div>
+    <div class="hv-glow"></div>
+    <div id="pts"></div>
+
+    <img src="poster.jpg" alt="When Gods Came Home — Event Poster" class="hero-poster">
+
+    <div class="hv-glow2"></div>
+  </div>
+</section>
+
+<!-- WHY ATTEND -->
+<section class="sec why-sec" id="why">
+  <div class="sh rev">
+    <span class="sh-lbl">The Invitation</span>
+    <h2 class="sh-ttl">Why Attend This Lecture</h2>
+    <div class="ornline"><span class="ornline-s">✦</span></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card"><div class="wc-n">01</div><div class="wc-v">Discover</div><p class="wc-t">How images shape memory and collective consciousness</p></div>
+    <div class="why-card"><div class="wc-n">02</div><div class="wc-v">Explore</div><p class="wc-t">The deep relationship between art and cultural identity</p></div>
+    <div class="why-card"><div class="wc-n">03</div><div class="wc-v">Understand</div><p class="wc-t">How visual traditions travel across time and geography</p></div>
+    <div class="why-card"><div class="wc-n">04</div><div class="wc-v">Learn</div><p class="wc-t">Through an immersive, narrative-driven lecture experience</p></div>
+    <div class="why-card"><div class="wc-n">05</div><div class="wc-v">Reflect</div><p class="wc-t">On identity, heritage, and our collective imagination</p></div>
+  </div>
+</section>
+
+<!-- THE STORY -->
+<section class="sec story-sec" id="story">
+  <div class="story-bg">STORY</div>
+  <div style="text-align:center;margin-bottom:72px" class="rev">
+    <span class="sh-lbl">The Narrative</span>
+    <h2 style="font-family:var(--fd);font-size:clamp(2rem,3.8vw,3.4rem);color:var(--parch-l)">The Story</h2>
+    <div class="sh-div" style="margin-top:18px"></div>
+  </div>
+  <div class="story-wrap">
+    <p class="story-p hl">Imagine walking into an Indian home in 1850.</p>
+    <p class="story-p">Now imagine walking into one in 1920.</p>
+    <p class="story-p">The furniture may be different. The politics may be different. The empire may be different.</p>
+    <p class="story-p hl">But the most significant change is hanging quietly on the wall.</p>
+    <p class="story-p em">A picture.</p>
+    <p class="story-p">A picture that millions of people have never questioned. A picture so familiar that it feels as though it has always been there.</p>
+    <p class="story-p hl">And yet, barely a generation earlier, it did not exist.</p>
+    <p class="story-p" style="font-size:clamp(1rem,1.7vw,1.4rem);color:rgba(240,222,176,.38)">Not in that form. Not in those colours. Not with that face.</p>
+    <p class="story-p" style="font-size:clamp(1rem,1.7vw,1.35rem);color:rgba(240,222,176,.38)">For thousands of years, stories travelled by memory. Through songs. Performances. Manuscripts. Sculptures. Murals. And the voices of people who carried them forward.</p>
+    <p class="story-p hl">Then something changed.</p>
+    <p class="story-p em">Images began travelling farther than ever before. And millions began sharing a common visual imagination.</p>
+    <p class="story-p lg">How did this happen?</p>
+    <p class="story-p cen">That is the story we will explore.</p>
+    <div style="text-align:center;margin-top:52px" class="story-p">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 42px;border:2px solid var(--gold);color:var(--gold);text-decoration:none;font-family:var(--fb);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s" onmouseover="this.style.background='rgba(196,137,42,.12)'" onmouseout="this.style.background='transparent'">Reserve Your Seat</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU WILL DISCOVER -->
+<section class="sec disc-sec" id="discover">
+  <div class="sh rev">
+    <span class="sh-lbl">The Chapters</span>
+    <h2 class="sh-ttl">What You Will Discover</h2>
+    <div class="sh-div"></div>
+  </div>
+  <div class="disc-grid">
+    <div class="disc-card"><div class="dc-n">I</div><h3 class="dc-t">The Picture on the Wall</h3><p class="dc-sub">Where the journey begins — the familiar image hiding its origin</p></div>
+    <div class="disc-card"><div class="dc-n">II</div><h3 class="dc-t">Before the Faces Arrived</h3><p class="dc-sub">The visual landscape of India before the transformation</p></div>
+    <div class="disc-card"><div class="dc-n">III</div><h3 class="dc-t">Iron Tracks & Inked Stones</h3><p class="dc-sub">Railways, printing presses, and the mechanics of imagination</p></div>
+    <div class="disc-card"><div class="dc-n">IV</div><h3 class="dc-t">The New Faces of Old Stories</h3><p class="dc-sub">How ancient narratives found entirely new visual forms</p></div>
+    <div class="disc-card"><div class="dc-n">V</div><h3 class="dc-t">The Art of Multiplication</h3><p class="dc-sub">When a single image became millions of images</p></div>
+    <div class="disc-card"><div class="dc-n">VI</div><h3 class="dc-t">The Journey Home</h3><p class="dc-sub">How pictures entered the homes and hearts of a nation</p></div>
+    <div class="disc-card"><div class="dc-n">VII</div><h3 class="dc-t">The Invisible Author</h3><p class="dc-sub">The person behind the transformation — and why we forgot them</p></div>
+    <div class="disc-card"><div class="dc-n">VIII</div><h3 class="dc-t">What We Inherited</h3><p class="dc-sub">The living legacy of images that shaped our imagination</p></div>
+  </div>
+</section>
+
+<!-- WHO SHOULD ATTEND -->
+<section class="sec who-sec" id="audience">
+  <div class="sh rev" style="text-align:center">
+    <span class="sh-lbl">The Gathering</span>
+    <h2 class="sh-ttl lt">Who Should Attend</h2>
+    <div class="sh-div"></div>
+  </div>
+  <div class="aud-grid">
+    <div class="aud-tag">Students</div>
+    <div class="aud-tag">Teachers</div>
+    <div class="aud-tag">Art Enthusiasts</div>
+    <div class="aud-tag">History Enthusiasts</div>
+    <div class="aud-tag">Mythology Enthusiasts</div>
+    <div class="aud-tag">Culture Researchers</div>
+    <div class="aud-tag">Parents</div>
+    <div class="aud-tag">Curious Minds</div>
+  </div>
+</section>
+
+<!-- ABOUT COBALT BLUE FOUNDATION -->
+<section class="sec about-sec" id="about">
+  <div class="about-grid">
+    <div class="about-logo-wrap rev">
+      <div class="about-logo-circle">
+       <img src="cbf-logo.png" alt="CBF Logo" class="logo-img">
+      </div>
+      <div class="pillar-wrap">
+        <span class="pillar">Mythology</span><span class="pillar">Art</span><span class="pillar">Culture</span>
+        <span class="pillar">Heritage</span><span class="pillar">Expressive Arts</span><span class="pillar">Wellbeing</span>
+        <span class="pillar">Human Connection</span>
+      </div>
+    </div>
+    <div class="about-txt rev">
+      <span class="sh-lbl">About</span>
+      <h2>Cobalt Blue Foundation</h2>
+      <p>Cobalt Blue Foundation is a multidisciplinary cultural organisation that brings together mythology, art, heritage, expressive arts, and human connection. Through lectures, workshops, and immersive programmes, we create spaces where ancient stories meet contemporary minds.</p>
+      <p>Our work explores the deep connections between visual culture, collective memory, and individual identity — asking the questions that the familiar never invites us to ask.</p>
+      <p>We believe that understanding the stories behind our stories is the first step toward understanding ourselves.</p>
+      <div class="about-stats">
+        <div><div class="as-label">Mission</div><div class="as-sub">Making India's cultural inheritance intellectually accessible to every generation</div></div>
+        <div><div class="as-label">Vision</div><div class="as-sub">A world that remembers where its imagination came from</div></div>
+        <div><div class="as-label">Impact</div><div class="as-sub">Workshops · Lectures · Publications · Youth Programmes</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+   <!-- FOUNDING TEAM -->
+<section class="sec team-sec" id="team">
+
+  <div class="sh rev" style="text-align:center">
+    <span class="sh-lbl" style="color:var(--gold)">The Visionaries</span>
+    <h2 class="sh-ttl lt">Meet the Team Behind CBF</h2>
+    <div class="sh-div"></div>
+  </div>
+
+  <div class="team-grid">
+
+    <!-- Founder -->
+    <div class="team-card rev">
+      <img src="founder.jpg" alt="Sundeep Verma" class="team-img" loading="lazy">
+
+      <div>
+        <div class="ti-role">Founder</div>
+        <h3 class="ti-name">Sundeep Verma</h3>
+        <div class="ti-desig">Storytelling · Mythology · Art Psychology</div>
+        <p class="ti-bio">
+          Author, graphic novelist and storyteller with senior leadership experience at Ogilvy, Grey Worldwide and Omnicom Group. Holds an MA in Narrative Environment Design from Central Saint Martins, UK. Internationally recognised for workshops, keynotes and publications connecting myth and wellbeing.
+        </p>
+      </div>
+    </div>
+
+    <!-- Co-Founder -->
+    <div class="team-card rev">
+      <img src="cofounder.jpg" alt="Ruchi Ruuh" class="team-img" loading="lazy">
+
+      <div>
+        <div class="ti-role">Co-Founder</div>
+        <h3 class="ti-name">Ruchi Ruuh</h3>
+        <div class="ti-desig">Psychology · Design · Wellbeing</div>
+        <p class="ti-bio">
+          Qualified counselling psychologist with a BA in Design (NIFT), MA in Design (Nottingham Trent) and PG Diploma in Counselling Psychology. Brings a compassionate, design-informed approach to emotional wellbeing and youth development.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EVENT DETAILS -->
+<section class="sec evt-sec" id="details">
+  <span class="sh-lbl rev" style="display:block;text-align:center;margin-bottom:44px">The Details</span>
+  <div class="museum-inv rev">
+    <div class="mi-header">You Are Cordially Invited To Attend</div>
+    <h2 class="mi-title">When Gods Came Home</h2>
+    <p class="mi-sub">The Story Behind The Images That Shaped A Nation's Imagination</p>
+    <div class="mi-grid">
+      <div><div class="mi-item-l">Date</div><div class="mi-item-v">27 June<br>2026</div></div>
+      <div><div class="mi-item-l">Time</div><div class="mi-item-v">4 PM – 5 PM<br>IST</div></div>
+      <div><div class="mi-item-l">Format</div><div class="mi-item-v">Live via<br>Zoom</div></div>
+      <div><div class="mi-item-l">Seats</div><div class="mi-item-v">Limited<br>by Intention</div></div>
+    </div>
+    <p class="mi-note">This event is designed to be intimate and focused. Once seats are filled, registration closes.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-hero" style="display:inline-block;padding:15px 48px"><span>Reserve Your Seat</span></a>
+    <div class="orn" style="margin-top:28px">— ✦ Cobalt Blue Foundation ✦ —</div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section class="sec reg-sec" id="register">
+  <div class="sh rev">
+    <span class="sh-lbl">Secure Your Place</span>
+    <h2 class="sh-ttl lt">Reserve Your Seat</h2>
+    <div class="sh-div"></div>
+    <p style="font-family:var(--fh);font-style:italic;color:rgba(240,222,176,.55);max-width:480px;margin:16px auto 0;font-size:1.05rem">Choose the pass that suits you. All passes include full lecture access.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pc feat">
+      <div class="pc-type">Student Pass</div>
+      <div class="pc-amt pc-amt-combo">
+        <span class="pc-amt-old">₹99</span>
+        <span class="pc-amt-live"><sup>₹</sup>0</span>
+      </div>
+      <ul class="pc-list">
+        <li>Full Lecture Access</li><li>Live Participation</li><li>Zoom Access</li><li>Event Resources</li>
+      </ul>
+      <p class="pc-note">Free Attendance · Certificate Add-on Available</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-reg">Register Free</a>
+    </div>
+    <div class="pc">
+      <div class="pc-type">Adult Pass</div>
+      <div class="pc-amt"><sup>₹</sup>99</div>
+      <ul class="pc-list">
+        <li>Full Lecture Access</li><li>Zoom Access</li><li>Event Resources</li>
+      </ul>
+      <p class="pc-note">Full Access</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-reg ol">Register Now</a>
+    </div>
+    <div class="pc">
+      <div class="pc-type">Certificate Add-on</div>
+      <div class="pc-amt"><sup>₹</sup>299</div>
+      <ul class="pc-list">
+        <li>Official CBF Certificate</li><li>Digital Recognition</li><li>Available for Students</li>
+      </ul>
+      <p class="pc-note">Official Cobalt Blue Foundation Certificate</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-reg ol">Add On</a>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:8px" class="rev">
+    <div class="seats-tag" style="display:inline-flex">Seats Are Limited By Intention</div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="fcta-sec" id="cta">
+  <div class="fcta-glow"></div>
+  <div style="position:relative;z-index:1">
+    <p class="fcta-q rev">"The story has been hanging quietly on the wall all along."</p>
+    <p class="fcta-q2 rev">Now discover it.</p>
+    <h2 class="fcta-title rev">When <em>Gods</em><br>Came Home</h2>
+    <div class="orn rev">— ✦ —</div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-fcta rev" style="margin-top:28px"><span>Reserve Your Seat</span></a>
+    <p class="fcta-meta rev">27 June 2026 · 4:00 PM IST · Live via Zoom · Cobalt Blue Foundation</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="fl-logo">
+        <div class="fl-logo-circ">
+        <img src="cbf-logo.png" alt="CBF Logo" class="logo-img">
+        </div>
+        <div class="fl-brand">Cobalt Blue Foundation<small>Art · Culture · Heritage · Mythology</small></div>
+      </div>
+      <p class="fl-tag">Bringing together mythology, art, culture, heritage, expressive arts and human connection.</p>
+    </div>
+    <div>
+      <div class="fc-ttl">Event</div>
+      <ul class="fc-links">
+        <li><a href="#why">Why Attend</a></li>
+        <li><a href="#story">The Story</a></li>
+        <li><a href="#discover">What You'll Discover</a></li>
+        <li><a href="#details">Event Details</a></li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Register Now →</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-ttl">Connect</div>
+      <ul class="fc-links">
+        <li><a href="https://www.cobaltbluefoundation.com" target="_blank" rel="noopener noreferrer">🌐 cobaltbluefoundation.com</a></li>
+        <li><a href="https://www.instagram.com/cobaltbluefoundation" target="_blank" rel="noopener noreferrer">📸 @cobaltbluefoundation</a></li>
+        <li><a href="mailto:cobaltblueworkshops@gmail.com">✉️ cobaltblueworkshops@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span>© 2026 Cobalt Blue Foundation. All rights reserved.</span>
+    <span>When Gods Came Home · 27 June 2026</span>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('on', window.scrollY > 70));
+
+// Reveal on scroll
+document.querySelectorAll('.rev').forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 44 },
+    { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+// Hero entrance
+gsap.from('.hero-content > *', { opacity: 0, y: 32, duration: .9, stagger: .13, ease: 'power3.out', delay: .3 });
+gsap.from('.hero-poster', { opacity: 0, scale: .92, duration: 1.6, ease: 'power3.out', delay: .9 });
+
+// Why cards stagger
+gsap.fromTo('.why-card',
+  { opacity: 0, y: 56 },
+  { opacity: 1, y: 0, duration: .8, stagger: .12, ease: 'power3.out',
+    scrollTrigger: { trigger: '.why-grid', start: 'top 78%' }
+  }
+);
+
+// Discover cards
+gsap.fromTo('.disc-card',
+  { opacity: 0, y: 36 },
+  { opacity: 1, y: 0, duration: .7, stagger: .08, ease: 'power3.out',
+    scrollTrigger: { trigger: '.disc-grid', start: 'top 80%' }
+  }
+);
+
+// Audience tags
+gsap.fromTo('.aud-tag',
+  { opacity: 0, scale: .88 },
+  { opacity: 1, scale: 1, duration: .5, stagger: .07, ease: 'back.out(1.7)',
+    scrollTrigger: { trigger: '.aud-grid', start: 'top 80%' }
+  }
+);
+
+// Pricing cards
+gsap.fromTo('.pc',
+  { opacity: 0, y: 56 },
+  { opacity: 1, y: 0, duration: .8, stagger: .18, ease: 'power3.out',
+    scrollTrigger: { trigger: '.pricing-grid', start: 'top 80%' }
+  }
+);
+
+// Story lines
+document.querySelectorAll('.story-p').forEach(p => {
+  gsap.fromTo(p,
+    { opacity: 0, y: 28 },
+    { opacity: 1, y: 0, duration: .85, ease: 'power2.out',
+      scrollTrigger: { trigger: p, start: 'top 82%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+// Parallax on hero glow
+gsap.to('.hv-glow', { y: -70, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+// Particles
+(function(){
+  const c = document.getElementById('pts');
+  if (!c) return;
+  const sfx = document.createElement('style');
+  sfx.textContent = `@keyframes fp{0%{opacity:0;transform:translateY(0)}25%{opacity:.4}75%{opacity:.15}100%{opacity:0;transform:translateY(-80px)}}`;
+  document.head.appendChild(sfx);
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    p.style.cssText = `position:absolute;width:${1+Math.random()*2.5}px;height:${1+Math.random()*2.5}px;background:rgba(196,137,42,${.3+Math.random()*.5});border-radius:50%;left:${Math.random()*100}%;top:${Math.random()*100}%;animation:fp ${5+Math.random()*9}s ease-in-out ${Math.random()*7}s infinite;opacity:0;`;
+    c.appendChild(p);
+  }
+})();
+
+// Smooth scroll anchors
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
