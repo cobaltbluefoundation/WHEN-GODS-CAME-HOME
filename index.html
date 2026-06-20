@@ -76,7 +76,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .price-pill{text-align:center;min-width:80px}
 .price-pill-t{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,222,176,.55)}
 .price-pill-v{font-family:var(--fh);font-size:1.6rem;color:var(--parch-l);font-weight:600;line-height:1.1}
-.price-pill-n{font-size:.6rem;color:var(--gold)}
+.price-pill-n{font-size:.20rem;color:var(--gold)}
 .price-sep{width:1px;height:46px;background:rgba(196,137,42,.25);flex-shrink:0}
 .seats-tag{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(224,85,0,.35);color:var(--orange);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;margin-left:auto}
 .seats-tag::before{content:'●';animation:blink 1.5s infinite;font-size:.45rem}
@@ -238,6 +238,8 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .pc{border:1px solid rgba(196,137,42,.28);padding:44px 32px;position:relative;transition:.4s;background:rgba(196,137,42,.03)}
 .pc.feat{border-color:var(--gold);background:rgba(196,137,42,.07)}
 .pc.feat::before{content:'MOST POPULAR';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:.52rem;letter-spacing:.2em;padding:4px 14px;font-family:var(--fb);white-space:nowrap}
+.pc.pc-only{border-color:var(--gold);background:rgba(196,137,42,.07)}
+.pricing-grid-single{grid-template-columns:1fr;max-width:400px}
 .pc:hover{transform:translateY(-6px);border-color:var(--gold)}
 .pc-type{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 .pc-amt{font-family:var(--fd);font-size:3.5rem;font-weight:700;color:var(--parch-l);line-height:1;margin-bottom:6px}
@@ -375,15 +377,9 @@ body.loaded .rev {
     </div>
     <div class="hero-pricing">
       <div class="price-pill">
-        <div class="price-pill-t">Student Pass</div>
-        <div class="price-pill-v">FREE</div>
-        <div class="price-pill-n">+ ₹299 Certificate</div>
-      </div>
-      <div class="price-sep"></div>
-      <div class="price-pill">
-        <div class="price-pill-t">Adult Pass</div>
-        <div class="price-pill-v">₹99</div>
-        <div class="price-pill-n">Full Access</div>
+        <div class="price-pill-t">Event Pass</div>
+        <div class="price-pill-v">₹200</div>
+        <div class="price-pill-n">Certificate available upon request</div>
       </div>
       <div class="price-sep"></div>
       <div class="seats-tag">Limited Seats</div>
@@ -585,39 +581,18 @@ body.loaded .rev {
     <span class="sh-lbl">Secure Your Place</span>
     <h2 class="sh-ttl lt">Reserve Your Seat</h2>
     <div class="sh-div"></div>
-    <p style="font-family:var(--fh);font-style:italic;color:rgba(240,222,176,.55);max-width:480px;margin:16px auto 0;font-size:1.05rem">Choose the pass that suits you. All passes include full lecture access.</p>
+    <p style="font-family:var(--fh);font-style:italic;color:rgba(240,222,176,.55);max-width:480px;margin:16px auto 0;font-size:1.05rem">A single elegant pass for full access to the live online lecture.</p>
   </div>
 
-  <div class="pricing-grid">
-    <div class="pc feat">
-      <div class="pc-type">Student Pass</div>
-      <div class="pc-amt pc-amt-combo">
-        <span class="pc-amt-old">₹99</span>
-        <span class="pc-amt-live"><sup>₹</sup>0</span>
-      </div>
+  <div class="pricing-grid pricing-grid-single">
+    <div class="pc pc-only">
+      <div class="pc-type">Event Pass</div>
+      <div class="pc-amt"><sup>₹</sup>200</div>
       <ul class="pc-list">
-        <li>Full Lecture Access</li><li>Live Participation</li><li>Zoom Access</li><li>Event Resources</li>
+        <li>Access to the Live Online Lecture</li>
       </ul>
-      <p class="pc-note">Free Attendance · Certificate Add-on Available</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-reg">Register Free</a>
-    </div>
-    <div class="pc">
-      <div class="pc-type">Adult Pass</div>
-      <div class="pc-amt"><sup>₹</sup>99</div>
-      <ul class="pc-list">
-        <li>Full Lecture Access</li><li>Zoom Access</li><li>Event Resources</li>
-      </ul>
-      <p class="pc-note">Full Access</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-reg ol">Register Now</a>
-    </div>
-    <div class="pc">
-      <div class="pc-type">Certificate Add-on</div>
-      <div class="pc-amt"><sup>₹</sup>299</div>
-      <ul class="pc-list">
-        <li>Official CBF Certificate</li><li>Digital Recognition</li><li>Available for Students</li>
-      </ul>
-      <p class="pc-note">Official Cobalt Blue Foundation Certificate</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-reg ol">Add On</a>
+      <p class="pc-note">Certificate available upon request</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-reg">Reserve Your Seat</a>
     </div>
   </div>
 
