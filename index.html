@@ -13,7 +13,7 @@
 <meta property="og:title" content="When Gods Came Home | Cobalt Blue Foundation">
 <meta property="og:description" content="The Story Behind The Images That Shaped A Nation's Imagination. A lecture by Cobalt Blue Foundation — 27 June 2026, live via Zoom.">
 <meta property="og:image" content="cbf-logo.png">
-<meta property="og:url" content="https://your-username.github.io/your-repo-name/">
+<meta property="og:url" content="https://tanishkajain17.github.io/when-gods-came-home/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="When Gods Came Home | Cobalt Blue Foundation">
 <meta name="twitter:description" content="The Story Behind The Images That Shaped A Nation's Imagination. 27 June 2026 · Live via Zoom.">
@@ -51,8 +51,21 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:.4s}
 .nav.on{background:rgba(24,8,0,.95);backdrop-filter:blur(14px);padding:12px 48px;border-bottom:1px solid rgba(196,137,42,.25)}
 .nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
-.nav-logo-img{width:40px;height:40px;object-fit:contain;display:block;flex-shrink:0;transition:.3s}
-.nav.on .nav-logo-img{width:32px;height:32px}
+
+/* FIX 1 — NAV LOGO
+   Was: width:40px; height:40px (fixed both axes → forced square crop on non-square logos)
+   Now: fixed width only, height:auto preserves natural aspect ratio, object-fit:contain as safety net */
+.nav-logo-img{
+  width:40px;
+  height:auto;
+  max-height:40px;
+  object-fit:contain;
+  display:block;
+  flex-shrink:0;
+  transition:width .3s, max-height .3s;
+}
+.nav.on .nav-logo-img{width:32px;max-height:32px}
+
 .nav-brand{font-family:var(--fd);font-size:.9rem;color:#fff;line-height:1.2}
 .nav-brand small{display:block;font-family:var(--fb);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
 .nav-btn{background:var(--orange);color:#fff;padding:10px 26px;font-family:var(--fb);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:.3s;border:2px solid var(--orange)}
@@ -76,7 +89,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .price-pill{text-align:center;min-width:80px}
 .price-pill-t{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,222,176,.55)}
 .price-pill-v{font-family:var(--fh);font-size:1.6rem;color:var(--parch-l);font-weight:600;line-height:1.1}
-.price-pill-n{font-size:.20rem;color:var(--gold)}
+.price-pill-n{font-size:.6rem;color:var(--gold)}
 .price-sep{width:1px;height:46px;background:rgba(196,137,42,.25);flex-shrink:0}
 .seats-tag{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(224,85,0,.35);color:var(--orange);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;margin-left:auto}
 .seats-tag::before{content:'●';animation:blink 1.5s infinite;font-size:.45rem}
@@ -96,36 +109,35 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 @keyframes scrl{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.65)}}
 
 /* HERO VISUAL */
-.logo-img{
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-  display: block;
-  transition: all .3s ease;
-}
+
+/* FIX 2 — HERO LOGO
+   Was: missing object-fit, height:auto was present but no contain safety
+   Now: explicit object-fit:contain ensures no distortion at any viewport width */
 .hero-logo{
-  width: 140px;
-  max-width: 40vw;
-  height: auto;
-  display: block;
-  margin: 0 auto 28px;
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,.3));
+  width:160px;
+  max-width:38vw;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  margin:0 auto 28px;
+  filter:drop-shadow(0 10px 30px rgba(0,0,0,.3));
 }
+
+/* FIX 3 — SHARED LOGO IMAGE (about section + footer)
+   Was: width:56px; height:56px — fixed both dimensions distorts non-square logos
+   Now: width + height auto, bounded by max-width, object-fit:contain as safety net */
+.logo-img{
+  width:100%;
+  height:auto;
+  max-width:52px;
+  object-fit:contain;
+  display:block;
+  transition:all .3s ease;
+}
+
 .hero-visual{position:relative;overflow:hidden}
 .hv-bg{position:absolute;inset:0;background:linear-gradient(145deg,#3D1500 0%,#1A0800 55%,#0D0400 100%)}
 .hv-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 35% 65%,rgba(196,137,42,.18) 0%,transparent 60%),radial-gradient(ellipse at 75% 25%,rgba(224,85,0,.12) 0%,transparent 50%)}
-.hv-frame{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68%;aspect-ratio:3/4;border:2.5px solid rgba(196,137,42,.5)}
-.hv-frame::before{content:'';position:absolute;inset:9px;border:1px solid rgba(196,137,42,.18)}
-.hv-corner{position:absolute;width:18px;height:18px;border-style:solid;border-color:var(--gold)}
-.hv-corner.tl{top:-3px;left:-3px;border-width:3px 0 0 3px}
-.hv-corner.tr{top:-3px;right:-3px;border-width:3px 3px 0 0}
-.hv-corner.bl{bottom:-3px;left:-3px;border-width:0 0 3px 3px}
-.hv-corner.br{bottom:-3px;right:-3px;border-width:0 3px 3px 0}
-.hv-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center}
-.hv-quote{font-family:var(--fh);font-style:italic;font-size:clamp(.85rem,1.3vw,1.1rem);color:rgba(240,222,176,.75);line-height:1.85;margin-bottom:18px}
-.hv-title{font-family:var(--fd);font-size:clamp(1.4rem,2.2vw,1.9rem);color:var(--gold);font-weight:700;line-height:1.1;margin-bottom:18px}
-.hv-rule{font-size:.7rem;color:rgba(196,137,42,.5);letter-spacing:.5em;margin-bottom:16px}
-.hv-sub{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(196,137,42,.55);font-family:var(--fb);line-height:1.8}
 .hv-glow2{position:absolute;bottom:18%;left:50%;transform:translateX(-50%);width:100px;height:100px;background:radial-gradient(circle,rgba(255,200,80,.3) 0%,rgba(224,85,0,.12) 45%,transparent 70%);border-radius:50%;animation:flicker 3.5s ease-in-out infinite alternate}
 @keyframes flicker{0%{transform:translateX(-50%) scale(1);opacity:.7}100%{transform:translateX(-50%) scale(1.35);opacity:1}}
 #pts{position:absolute;inset:0;overflow:hidden;pointer-events:none}
@@ -196,12 +208,32 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .about-sec{background:var(--parch-l)}
 .about-grid{display:grid;grid-template-columns:220px 1fr;gap:72px;align-items:start;max-width:1150px;margin:0 auto}
 .about-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:24px}
-.about-logo-circle{width:150px;height:150px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(196,137,42,.25);overflow:hidden;box-shadow:0 4px 32px rgba(42,14,0,.1)}
+
+/* FIX 4 — ABOUT LOGO CONTAINER
+   Was: border-radius:50%; overflow:hidden; fixed 150×150px — circular crop distorted/clipped non-square logos
+   Now: square container preserved for layout, overflow:hidden removed, border-radius removed.
+   Uses padding so logo has breathing room and is never clipped. */
+.about-logo-circle{
+  width:150px;
+  background:#fff;
+  border:2px solid rgba(196,137,42,.25);
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 32px rgba(42,14,0,.1);
+}
+
+/* FIX 5 — ABOUT LOGO IMAGE
+   Was: width:78%; height:78%; — percentage of a clipped circle, still distorted
+   Now: fills the padded container, height auto, object-fit:contain */
 .about-logo-circle .logo-img{
-  width:78%;
-  height:78%;
+  width:100%;
+  height:auto;
+  max-width:110px;
   object-fit:contain;
 }
+
 .pillar{padding:6px 13px;border:1px solid rgba(92,42,16,.28);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brown-m)}
 .pillar-wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .about-txt h2{font-family:var(--fd);font-size:clamp(1.8rem,3.2vw,2.8rem);color:var(--brown);margin-bottom:20px}
@@ -236,18 +268,12 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .reg-sec{background:var(--dark);text-align:center}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;max-width:1000px;margin:52px auto}
 .pc{border:1px solid rgba(196,137,42,.28);padding:44px 32px;position:relative;transition:.4s;background:rgba(196,137,42,.03)}
-.pc.feat{border-color:var(--gold);background:rgba(196,137,42,.07)}
-.pc.feat::before{content:'MOST POPULAR';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:.52rem;letter-spacing:.2em;padding:4px 14px;font-family:var(--fb);white-space:nowrap}
 .pc.pc-only{border-color:var(--gold);background:rgba(196,137,42,.07)}
 .pricing-grid-single{grid-template-columns:1fr;max-width:400px}
 .pc:hover{transform:translateY(-6px);border-color:var(--gold)}
 .pc-type{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 .pc-amt{font-family:var(--fd);font-size:3.5rem;font-weight:700;color:var(--parch-l);line-height:1;margin-bottom:6px}
 .pc-amt sup{font-size:1.8rem}
-.pc-amt-combo{display:flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap}
-.pc-amt-old{font-family:var(--fh);font-size:1.5rem;font-style:italic;color:rgba(240,222,176,.4);text-decoration:line-through;text-decoration-color:rgba(224,85,0,.6)}
-.pc-amt-live{font-family:var(--fd);font-size:3.5rem;font-weight:700;color:var(--parch-l);line-height:1}
-.pc-amt-live sup{font-size:1.8rem}
 .pc-list{margin:28px 0;text-align:left}
 .pc-list li{list-style:none;padding:9px 0;border-bottom:1px solid rgba(196,137,42,.1);color:rgba(240,222,176,.68);font-size:.88rem;display:flex;align-items:center;gap:10px}
 .pc-list li::before{content:'—';color:var(--gold);flex-shrink:0}
@@ -283,10 +309,35 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .footer{background:#0C0400;padding:56px clamp(20px,5vw,80px) 28px;border-top:1px solid rgba(196,137,42,.18)}
 .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(196,137,42,.1)}
 .fl-logo{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-.fl-logo-circ{width:58px;height:58px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+
+/* FIX 6 — FOOTER LOGO CONTAINER
+   Was: 58px circle with overflow:hidden — clipped logos that aren't square
+   Now: keeps square container for layout, removes overflow:hidden and border-radius,
+   adds padding so logo breathes, object-fit:contain on the inner .logo-img handles the rest */
+.fl-logo-circ{
+  width:58px;
+  height:58px;
+  background:#fff;
+  border:1px solid rgba(196,137,42,.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  padding:8px;
+}
+
+/* FIX 7 — FOOTER LOGO IMAGE
+   Scoped override: fills the padded 58px container correctly */
+.fl-logo-circ .logo-img{
+  width:100%;
+  height:auto;
+  max-width:100%;
+  object-fit:contain;
+}
+
 .fl-brand{font-family:var(--fd);font-size:.92rem;color:var(--parch-l);line-height:1.3}
 .fl-brand small{display:block;font-family:var(--fb);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-.fl-tag{font-family:var(--fh);font-style:italic;color:rgba(240,222,176,.4);font-size:.88rem}
+.fl-tag{font-family:var(--fh);font-style:italic;color:rgba(240,222,180,.4);font-size:.88rem}
 .fc-ttl{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
 .fc-links{list-style:none;display:flex;flex-direction:column;gap:11px}
 .fc-links a{color:rgba(240,222,176,.55);text-decoration:none;font-size:.88rem;transition:.3s;display:flex;align-items:center;gap:8px}
@@ -294,20 +345,19 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .footer-bot{max-width:1200px;margin:26px auto 0;display:flex;justify-content:space-between;align-items:center;color:rgba(240,222,176,.25);font-size:.7rem}
 
 /* UTILITIES */
-.rev {
-  opacity: 0;
-  transform: translateY(44px);
-  transition: all 0.6s ease;
-}
-body.loaded .rev {
-  opacity: 1;
-  transform: none;
-}
+.rev{opacity:0;transform:translateY(44px);transition:all .6s ease}
+body.loaded .rev{opacity:1;transform:none}
 .ornline{display:flex;align-items:center;gap:14px;margin:14px 0}
 .ornline::before,.ornline::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
 .ornline-s{color:var(--gold);font-size:.65rem}
 
-/* RESPONSIVE */
+/* ============================================================
+   RESPONSIVE LOGO SCALING
+   All logo fixes: proportional scale-down at tablet and mobile.
+   No layout or content changes — logo dimensions only.
+   ============================================================ */
+
+/* TABLET — max-width: 1024px (existing breakpoint, logo additions only) */
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr}
   .hero-visual,.scroll-cue{display:none}
@@ -316,7 +366,14 @@ body.loaded .rev {
   .about-logo-wrap{flex-direction:row}
   .team-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
+
+  /* Logo scaling — tablet */
+  .hero-logo{width:130px}
+  .about-logo-circle{width:130px;padding:16px}
+  .about-logo-circle .logo-img{max-width:98px}
 }
+
+/* TABLET — max-width: 768px */
 @media(max-width:768px){
   .nav{padding:16px 20px}
   .nav.on{padding:12px 20px}
@@ -328,16 +385,29 @@ body.loaded .rev {
   .footer-grid{grid-template-columns:1fr;gap:36px}
   .footer-bot{flex-direction:column;gap:8px;text-align:center}
   .about-stats{grid-template-columns:1fr;gap:20px}
+
+  /* Logo scaling — tablet/large mobile */
+  .nav-logo-img{width:32px;max-height:32px}
+  .hero-logo{width:110px;max-width:32vw}
+  .about-logo-circle{width:110px;padding:14px}
+  .about-logo-circle .logo-img{max-width:82px}
+  .fl-logo-circ{width:50px;height:50px;padding:7px}
 }
+
+/* MOBILE — max-width: 480px */
 @media(max-width:480px){
   .hero-pricing{gap:14px}
   .price-sep{display:none}
   .seats-tag{margin-left:0}
   .mi-grid{grid-template-columns:1fr 1fr}
   .pricing-grid{grid-template-columns:1fr}
-  .pc-amt-combo{gap:10px}
-  .pc-amt-old{font-size:1.2rem}
-  .pc-amt-live{font-size:2.8rem}
+
+  /* Logo scaling — small mobile */
+  .nav-logo-img{width:28px;max-height:28px}
+  .hero-logo{width:90px;max-width:28vw}
+  .about-logo-circle{width:96px;padding:12px}
+  .about-logo-circle .logo-img{max-width:72px}
+  .fl-logo-circ{width:44px;height:44px;padding:6px}
 }
 </style>
 </head>
@@ -352,7 +422,6 @@ body.loaded .rev {
       <small>Art · Culture · Heritage</small>
     </div>
   </a>
-
   <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="nav-btn">
     Reserve Your Seat
   </a>
@@ -363,11 +432,8 @@ body.loaded .rev {
   <div class="hero-content">
     <img src="cbf-logo.png" alt="Cobalt Blue Foundation" class="hero-logo">
     <div class="hero-eyebrow"><span>Cobalt Blue Foundation Presents</span></div>
-
     <h1 class="hero-title">WHEN<br><em>GODS</em><br>CAME HOME</h1>
-
     <p class="hero-sub">SOME IMAGES CHANGE ART.<br>SOME CHANGE A CIVILISATION.</p>
-
     <div class="hero-rule"></div>
     <div class="hero-meta">
       <div class="meta-item"><div class="meta-l">Date</div><div class="meta-v">27 June 2026</div></div>
@@ -391,14 +457,11 @@ body.loaded .rev {
     <div class="scroll-cue"><div class="scroll-line"></div><span>Scroll</span></div>
   </div>
 
-  <!-- RIGHT VISUAL -->
   <div class="hero-visual">
     <div class="hv-bg"></div>
     <div class="hv-glow"></div>
     <div id="pts"></div>
-
     <img src="poster.jpg" alt="When Gods Came Home — Event Poster" class="hero-poster">
-
     <div class="hv-glow2"></div>
   </div>
 </section>
@@ -490,7 +553,7 @@ body.loaded .rev {
   <div class="about-grid">
     <div class="about-logo-wrap rev">
       <div class="about-logo-circle">
-       <img src="cbf-logo.png" alt="CBF Logo" class="logo-img">
+        <img src="cbf-logo.png" alt="CBF Logo" class="logo-img">
       </div>
       <div class="pillar-wrap">
         <span class="pillar">Mythology</span><span class="pillar">Art</span><span class="pillar">Culture</span>
@@ -513,46 +576,32 @@ body.loaded .rev {
   </div>
 </section>
 
-
-   <!-- FOUNDING TEAM -->
+<!-- FOUNDING TEAM -->
 <section class="sec team-sec" id="team">
-
   <div class="sh rev" style="text-align:center">
     <span class="sh-lbl" style="color:var(--gold)">The Visionaries</span>
     <h2 class="sh-ttl lt">Meet the Team Behind CBF</h2>
     <div class="sh-div"></div>
   </div>
-
   <div class="team-grid">
-
-    <!-- Founder -->
     <div class="team-card rev">
       <img src="founder.jpg" alt="Sundeep Verma" class="team-img" loading="lazy">
-
       <div>
         <div class="ti-role">Founder</div>
         <h3 class="ti-name">Sundeep Verma</h3>
         <div class="ti-desig">Storytelling · Mythology · Art Psychology</div>
-        <p class="ti-bio">
-          Author, graphic novelist and storyteller with senior leadership experience at Ogilvy, Grey Worldwide and Omnicom Group. Holds an MA in Narrative Environment Design from Central Saint Martins, UK. Internationally recognised for workshops, keynotes and publications connecting myth and wellbeing.
-        </p>
+        <p class="ti-bio">Author, graphic novelist and storyteller with senior leadership experience at Ogilvy, Grey Worldwide and Omnicom Group. Holds an MA in Narrative Environment Design from Central Saint Martins, UK. Internationally recognised for workshops, keynotes and publications connecting myth and wellbeing.</p>
       </div>
     </div>
-
-    <!-- Co-Founder -->
     <div class="team-card rev">
       <img src="cofounder.jpg" alt="Ruchi Ruuh" class="team-img" loading="lazy">
-
       <div>
         <div class="ti-role">Co-Founder</div>
         <h3 class="ti-name">Ruchi Ruuh</h3>
         <div class="ti-desig">Psychology · Design · Wellbeing</div>
-        <p class="ti-bio">
-          Qualified counselling psychologist with a BA in Design (NIFT), MA in Design (Nottingham Trent) and PG Diploma in Counselling Psychology. Brings a compassionate, design-informed approach to emotional wellbeing and youth development.
-        </p>
+        <p class="ti-bio">Qualified counselling psychologist with a BA in Design (NIFT), MA in Design (Nottingham Trent) and PG Diploma in Counselling Psychology. Brings a compassionate, design-informed approach to emotional wellbeing and youth development.</p>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -583,7 +632,6 @@ body.loaded .rev {
     <div class="sh-div"></div>
     <p style="font-family:var(--fh);font-style:italic;color:rgba(240,222,176,.55);max-width:480px;margin:16px auto 0;font-size:1.05rem">A single elegant pass for full access to the live online lecture.</p>
   </div>
-
   <div class="pricing-grid pricing-grid-single">
     <div class="pc pc-only">
       <div class="pc-type">Event Pass</div>
@@ -595,7 +643,6 @@ body.loaded .rev {
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="btn-reg">Reserve Your Seat</a>
     </div>
   </div>
-
   <div style="text-align:center;margin-top:8px" class="rev">
     <div class="seats-tag" style="display:inline-flex">Seats Are Limited By Intention</div>
   </div>
@@ -620,7 +667,7 @@ body.loaded .rev {
     <div>
       <div class="fl-logo">
         <div class="fl-logo-circ">
-        <img src="cbf-logo.png" alt="CBF Logo" class="logo-img">
+          <img src="cbf-logo.png" alt="CBF Logo" class="logo-img">
         </div>
         <div class="fl-brand">Cobalt Blue Foundation<small>Art · Culture · Heritage · Mythology</small></div>
       </div>
@@ -654,11 +701,9 @@ body.loaded .rev {
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('on', window.scrollY > 70));
 
-// Reveal on scroll
 document.querySelectorAll('.rev').forEach(el => {
   gsap.fromTo(el,
     { opacity: 0, y: 44 },
@@ -668,11 +713,9 @@ document.querySelectorAll('.rev').forEach(el => {
   );
 });
 
-// Hero entrance
 gsap.from('.hero-content > *', { opacity: 0, y: 32, duration: .9, stagger: .13, ease: 'power3.out', delay: .3 });
 gsap.from('.hero-poster', { opacity: 0, scale: .92, duration: 1.6, ease: 'power3.out', delay: .9 });
 
-// Why cards stagger
 gsap.fromTo('.why-card',
   { opacity: 0, y: 56 },
   { opacity: 1, y: 0, duration: .8, stagger: .12, ease: 'power3.out',
@@ -680,7 +723,6 @@ gsap.fromTo('.why-card',
   }
 );
 
-// Discover cards
 gsap.fromTo('.disc-card',
   { opacity: 0, y: 36 },
   { opacity: 1, y: 0, duration: .7, stagger: .08, ease: 'power3.out',
@@ -688,7 +730,6 @@ gsap.fromTo('.disc-card',
   }
 );
 
-// Audience tags
 gsap.fromTo('.aud-tag',
   { opacity: 0, scale: .88 },
   { opacity: 1, scale: 1, duration: .5, stagger: .07, ease: 'back.out(1.7)',
@@ -696,7 +737,6 @@ gsap.fromTo('.aud-tag',
   }
 );
 
-// Pricing cards
 gsap.fromTo('.pc',
   { opacity: 0, y: 56 },
   { opacity: 1, y: 0, duration: .8, stagger: .18, ease: 'power3.out',
@@ -704,7 +744,6 @@ gsap.fromTo('.pc',
   }
 );
 
-// Story lines
 document.querySelectorAll('.story-p').forEach(p => {
   gsap.fromTo(p,
     { opacity: 0, y: 28 },
@@ -714,10 +753,8 @@ document.querySelectorAll('.story-p').forEach(p => {
   );
 });
 
-// Parallax on hero glow
 gsap.to('.hv-glow', { y: -70, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
-// Particles
 (function(){
   const c = document.getElementById('pts');
   if (!c) return;
@@ -731,7 +768,6 @@ gsap.to('.hv-glow', { y: -70, ease: 'none', scrollTrigger: { trigger: '.hero', s
   }
 })();
 
-// Smooth scroll anchors
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
