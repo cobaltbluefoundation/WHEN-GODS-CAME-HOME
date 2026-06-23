@@ -8,7 +8,6 @@
 
 <link rel="icon" type="image/png" href="cbf-logo.png">
 <meta name="theme-color" content="#180800">
-
 <meta property="og:type" content="website">
 <meta property="og:title" content="When Gods Came Home | Cobalt Blue Foundation">
 <meta property="og:description" content="The Story Behind The Images That Shaped A Nation's Imagination. A lecture by Cobalt Blue Foundation — 27 June 2026, live via Zoom.">
@@ -42,6 +41,118 @@ html{scroll-behavior:smooth}
 body{background:var(--parch);color:var(--brown);font-family:var(--fb);font-size:1.05rem;line-height:1.75;overflow-x:hidden}
 body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.6}
 
+/* ============================================================
+   REGISTRATION MODAL
+   Sits at z-index:8000 — below body::after grain (9999) but
+   above everything else. Opens with fade + panel slide-up.
+   ============================================================ */
+.reg-modal{
+  position:fixed;inset:0;z-index:8000;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease;
+}
+.reg-modal.open{opacity:1;pointer-events:all}
+.reg-modal-overlay{
+  position:absolute;inset:0;
+  background:rgba(12,4,0,.88);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.reg-modal-panel{
+  position:relative;z-index:1;
+  background:var(--dark);
+  border:1px solid rgba(196,137,42,.38);
+  box-shadow:0 40px 100px rgba(0,0,0,.7),inset 0 1px 0 rgba(196,137,42,.12);
+  max-width:820px;width:100%;
+  padding:52px 48px 44px;
+  max-height:92vh;overflow-y:auto;
+  transform:translateY(24px) scale(.97);
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.reg-modal.open .reg-modal-panel{transform:translateY(0) scale(1)}
+.reg-modal-close{
+  position:absolute;top:16px;right:20px;
+  background:none;border:none;cursor:pointer;
+  color:rgba(196,137,42,.5);font-size:1.1rem;line-height:1;
+  padding:8px 10px;transition:color .3s;
+  font-family:var(--fb);
+}
+.reg-modal-close:hover{color:var(--gold)}
+.reg-modal-hd{text-align:center;margin-bottom:38px}
+.reg-modal-title{
+  font-family:var(--fd);
+  font-size:clamp(1.5rem,3vw,2.2rem);
+  color:var(--parch-l);margin:8px 0 10px;font-weight:700;
+}
+.reg-modal-sub{
+  font-family:var(--fh);font-style:italic;
+  color:rgba(240,222,176,.45);font-size:1rem;
+}
+.reg-modal-div{
+  width:64px;height:2px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  margin:16px auto 0;
+}
+/* Two cards side-by-side on desktop */
+.reg-modal-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+
+/* Individual modal card */
+.rmc{
+  border:1px solid rgba(196,137,42,.2);
+  padding:30px 24px;
+  display:flex;flex-direction:column;
+  transition:.3s;
+}
+.rmc:hover{border-color:rgba(196,137,42,.5);background:rgba(196,137,42,.03)}
+.rmc-student{border-color:rgba(196,137,42,.45);background:rgba(196,137,42,.06)}
+.rmc-badge{
+  display:inline-block;
+  background:var(--orange);color:#fff;
+  font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:5px 13px;font-family:var(--fb);
+  margin-bottom:16px;align-self:flex-start;
+}
+.rmc-type{
+  font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;
+}
+.rmc-price-wrap{display:flex;align-items:baseline;gap:13px;margin-bottom:4px;flex-wrap:wrap}
+.rmc-old{
+  font-family:var(--fh);font-style:italic;
+  font-size:1.3rem;color:rgba(240,222,176,.32);
+  text-decoration:line-through;
+  text-decoration-color:rgba(224,85,0,.5);
+}
+.rmc-new{
+  font-family:var(--fd);font-size:2.6rem;font-weight:700;
+  color:var(--parch-l);line-height:1;
+}
+.rmc-new sup,.rmc-old sup{font-size:60%;vertical-align:super}
+.rmc-tag{
+  font-family:var(--fh);font-style:italic;
+  color:rgba(196,137,42,.55);font-size:.85rem;
+  margin-bottom:18px;
+}
+.rmc-list{list-style:none;margin:16px 0 24px;flex:1}
+.rmc-list li{
+  padding:7px 0;border-bottom:1px solid rgba(196,137,42,.08);
+  color:rgba(240,222,176,.62);font-size:.85rem;
+  display:flex;align-items:center;gap:9px;
+}
+.rmc-list li::before{content:'—';color:var(--gold);flex-shrink:0}
+.rmc-btn{
+  display:block;padding:13px;text-align:center;
+  text-decoration:none;font-family:var(--fb);
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  transition:.3s;border:2px solid;margin-top:auto;
+}
+.rmc-btn-fill{background:var(--orange);color:#fff;border-color:var(--orange)}
+.rmc-btn-fill:hover{background:transparent;color:var(--orange)}
+.rmc-btn-ghost{background:transparent;border-color:rgba(196,137,42,.38);color:var(--gold)}
+.rmc-btn-ghost:hover{background:rgba(196,137,42,.1);border-color:var(--gold)}
+
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:.4s}
 .nav.on{background:rgba(24,8,0,.95);backdrop-filter:blur(14px);padding:12px 48px;border-bottom:1px solid rgba(196,137,42,.25)}
@@ -50,7 +161,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .nav.on .nav-logo-img{width:32px;max-height:32px}
 .nav-brand{font-family:var(--fd);font-size:.9rem;color:#fff;line-height:1.2}
 .nav-brand small{display:block;font-family:var(--fb);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.nav-btn{background:var(--orange);color:#fff;padding:10px 26px;font-family:var(--fb);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:.3s;border:2px solid var(--orange)}
+.nav-btn{background:var(--orange);color:#fff;padding:10px 26px;font-family:var(--fb);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:.3s;border:2px solid var(--orange);cursor:pointer}
 .nav-btn:hover{background:transparent;color:var(--orange)}
 
 /* HERO */
@@ -71,13 +182,15 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .price-pill{text-align:center;min-width:80px}
 .price-pill-t{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,222,176,.55)}
 .price-pill-v{font-family:var(--fh);font-size:1.6rem;color:var(--parch-l);font-weight:600;line-height:1.1}
+.price-pill-v.accent{color:var(--gold-l)}
 .price-pill-n{font-size:.6rem;color:var(--gold)}
+.price-pill-old{font-family:var(--fh);font-size:.85rem;color:rgba(240,222,176,.3);text-decoration:line-through;text-decoration-color:rgba(224,85,0,.5);display:block;line-height:1.2}
 .price-sep{width:1px;height:46px;background:rgba(196,137,42,.25);flex-shrink:0}
 .seats-tag{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(224,85,0,.35);color:var(--orange);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;margin-left:auto}
 .seats-tag::before{content:'●';animation:blink 1.5s infinite;font-size:.45rem}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 .hero-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-.btn-hero{background:var(--orange);color:#fff;padding:15px 38px;text-decoration:none;font-family:var(--fb);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;border:2px solid var(--orange);transition:.3s;position:relative;overflow:hidden}
+.btn-hero{background:var(--orange);color:#fff;padding:15px 38px;text-decoration:none;font-family:var(--fb);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;border:2px solid var(--orange);transition:.3s;position:relative;overflow:hidden;cursor:pointer;display:inline-block}
 .btn-hero::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:.4s}
 .btn-hero:hover::before{transform:translateX(0)}
 .btn-hero span{position:relative;z-index:1}
@@ -164,40 +277,12 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .as-label{font-family:var(--fd);font-size:1.1rem;color:var(--orange);margin-bottom:6px}
 .as-sub{font-size:.72rem;color:var(--brown-m);line-height:1.5}
 
-/* FACILITATOR SECTION
-   CHANGE 2–6: Replaced two-column team grid with a single centered facilitator card.
-   max-width reduced to 780px (matches story-wrap) so it reads as editorial, not stretched.
-   grid-template-columns removed from .team-grid; single column auto-flows the card.
-   .team-card stays on its own 2-col inner grid (photo left, bio right) — preserved exactly. */
+/* FACILITATOR */
 .team-sec{background:var(--dark)}
-.team-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:0;
-  max-width:780px;
-  margin:0 auto;
-}
-.team-card{
-  border:1px solid rgba(196,137,42,.15);
-  padding:36px;
-  display:grid;
-  grid-template-columns:170px 1fr;
-  gap:32px;
-  align-items:start;
-  transition:.4s;
-}
+.team-grid{display:grid;grid-template-columns:1fr;gap:0;max-width:780px;margin:0 auto}
+.team-card{border:1px solid rgba(196,137,42,.15);padding:36px;display:grid;grid-template-columns:170px 1fr;gap:32px;align-items:start;transition:.4s}
 .team-card:hover{border-color:rgba(196,137,42,.4);background:rgba(196,137,42,.03)}
-
-/* CHANGE 3: Facilitator subtitle line beneath section heading */
-.facilitator-sub{
-  font-family:var(--fh);
-  font-style:italic;
-  font-size:clamp(.95rem,1.5vw,1.2rem);
-  color:rgba(240,222,176,.55);
-  letter-spacing:.06em;
-  margin-top:12px;
-}
-
+.facilitator-sub{font-family:var(--fh);font-style:italic;font-size:clamp(.95rem,1.5vw,1.2rem);color:rgba(240,222,176,.55);letter-spacing:.06em;margin-top:12px}
 .ti-role{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .ti-name{font-family:var(--fd);font-size:clamp(1.1rem,1.8vw,1.5rem);color:var(--parch-l);margin-bottom:6px}
 .ti-desig{font-family:var(--fh);font-style:italic;color:var(--gold-d);font-size:.85rem;margin-bottom:14px}
@@ -215,22 +300,51 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .mi-item-v{font-family:var(--fd);font-size:.95rem;color:var(--brown);font-weight:600;line-height:1.4}
 .mi-note{font-family:var(--fh);font-style:italic;color:var(--brown-m);font-size:.88rem;margin-bottom:28px}
 
-/* REGISTRATION */
+/* REGISTRATION / PRICING SECTION
+   Two-card layout (Student + General) replacing the previous single card. */
 .reg-sec{background:var(--dark);text-align:center}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;max-width:1000px;margin:52px auto}
-.pc{border:1px solid rgba(196,137,42,.28);padding:44px 32px;position:relative;transition:.4s;background:rgba(196,137,42,.03)}
-.pc.pc-only{border-color:var(--gold);background:rgba(196,137,42,.07)}
-.pricing-grid-single{grid-template-columns:1fr;max-width:400px}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;max-width:860px;margin:52px auto}
+.pc{border:1px solid rgba(196,137,42,.28);padding:44px 32px;position:relative;transition:.4s;background:rgba(196,137,42,.03);display:flex;flex-direction:column}
+.pc-student{border-color:rgba(196,137,42,.5);background:rgba(196,137,42,.07)}
 .pc:hover{transform:translateY(-6px);border-color:var(--gold)}
+
+/* Student discount badge */
+.pc-badge{
+  display:inline-block;align-self:flex-start;
+  background:var(--orange);color:#fff;
+  font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:5px 13px;font-family:var(--fb);margin-bottom:18px;
+}
 .pc-type{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+
+/* Standard single price */
 .pc-amt{font-family:var(--fd);font-size:3.5rem;font-weight:700;color:var(--parch-l);line-height:1;margin-bottom:6px}
 .pc-amt sup{font-size:1.8rem}
-.pc-list{margin:28px 0;text-align:left}
+
+/* Student dual-price display */
+.pc-price-wrap{display:flex;align-items:baseline;gap:14px;margin-bottom:4px;flex-wrap:wrap}
+.pc-price-old{
+  font-family:var(--fh);font-style:italic;
+  font-size:1.5rem;
+  color:rgba(240,222,176,.3);
+  text-decoration:line-through;
+  text-decoration-color:rgba(224,85,0,.55);
+}
+.pc-price-old sup{font-size:.8rem;vertical-align:super}
+.pc-price-new{
+  font-family:var(--fd);font-size:3.5rem;font-weight:700;
+  color:var(--parch-l);line-height:1;
+}
+.pc-price-new sup{font-size:1.8rem}
+
+.pc-list{margin:24px 0;text-align:left;flex:1}
 .pc-list li{list-style:none;padding:9px 0;border-bottom:1px solid rgba(196,137,42,.1);color:rgba(240,222,176,.68);font-size:.88rem;display:flex;align-items:center;gap:10px}
 .pc-list li::before{content:'—';color:var(--gold);flex-shrink:0}
 .pc-note{font-size:.78rem;font-style:italic;color:rgba(196,137,42,.65);margin-bottom:28px}
-.btn-reg{display:block;padding:15px;background:var(--orange);color:#fff;text-decoration:none;font-family:var(--fb);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;border:2px solid var(--orange);transition:.3s}
+.btn-reg{display:block;padding:15px;background:var(--orange);color:#fff;text-decoration:none;font-family:var(--fb);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;border:2px solid var(--orange);transition:.3s;text-align:center;margin-top:auto}
 .btn-reg:hover{background:transparent;color:var(--orange)}
+.btn-reg.ol{background:transparent;border-color:rgba(196,137,42,.38);color:var(--gold)}
+.btn-reg.ol:hover{background:rgba(196,137,42,.1);border-color:var(--gold)}
 .team-img{width:100%;max-width:320px;aspect-ratio:3/4;object-fit:cover;border-radius:24px;border:1px solid rgba(196,137,42,.35);box-shadow:0 20px 60px rgba(0,0,0,.35)}
 
 /* FINAL CTA */
@@ -240,7 +354,7 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 .fcta-q2{font-family:var(--fh);font-style:italic;font-size:clamp(.9rem,1.5vw,1.2rem);color:rgba(240,222,176,.38);margin-bottom:40px}
 .fcta-title{font-family:var(--fd);font-size:clamp(2.8rem,6.5vw,5.5rem);color:var(--parch-l);margin-bottom:40px;line-height:.9}
 .fcta-title em{color:var(--gold)}
-.btn-fcta{display:inline-block;padding:18px 56px;background:var(--orange);color:#fff;text-decoration:none;font-family:var(--fb);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;border:2px solid var(--orange);transition:.3s;position:relative;overflow:hidden}
+.btn-fcta{display:inline-block;padding:18px 56px;background:var(--orange);color:#fff;text-decoration:none;font-family:var(--fb);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;border:2px solid var(--orange);transition:.3s;position:relative;overflow:hidden;cursor:pointer}
 .btn-fcta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:.4s}
 .btn-fcta:hover::before{transform:translateX(0)}
 .btn-fcta span{position:relative;z-index:1}
@@ -275,7 +389,6 @@ body.loaded .rev{opacity:1;transform:none}
   .hero-content{min-height:100vh;padding:120px 40px 80px}
   .about-grid{grid-template-columns:1fr;gap:36px}
   .about-logo-wrap{flex-direction:row}
-  /* Single card stays full-width on tablet — inner grid collapses at 768px */
   .team-grid{max-width:100%}
   .footer-grid{grid-template-columns:1fr 1fr}
   .hero-logo{width:130px}
@@ -289,7 +402,6 @@ body.loaded .rev{opacity:1;transform:none}
   .hero-meta{grid-template-columns:1fr}
   .museum-inv{padding:36px 22px}
   .mi-grid{grid-template-columns:1fr 1fr}
-  /* Single-column inner card layout on mobile */
   .team-card{grid-template-columns:1fr;text-align:center}
   .team-card .team-img{margin:0 auto 20px}
   .footer-grid{grid-template-columns:1fr;gap:36px}
@@ -300,6 +412,10 @@ body.loaded .rev{opacity:1;transform:none}
   .about-logo-circle{width:110px;padding:14px}
   .about-logo-circle .logo-img{max-width:82px}
   .fl-logo-circ{width:50px;height:50px;padding:7px}
+  /* Modal: stack cards on tablet/mobile */
+  .reg-modal-cards{grid-template-columns:1fr}
+  .reg-modal-panel{padding:36px 22px 28px}
+  .rmc-new{font-size:2.2rem}
 }
 @media(max-width:480px){
   .hero-pricing{gap:14px}
@@ -312,12 +428,76 @@ body.loaded .rev{opacity:1;transform:none}
   .about-logo-circle{width:96px;padding:12px}
   .about-logo-circle .logo-img{max-width:72px}
   .fl-logo-circ{width:44px;height:44px;padding:6px}
+  .reg-modal-panel{padding:28px 16px 22px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV — CHANGE 1: registration link updated -->
+<!-- ============================================================
+     REGISTRATION MODAL
+     Triggered by all [data-reg="trigger"] elements.
+     Student → Google Form   |   General → Instamojo
+     ============================================================ -->
+<div class="reg-modal" id="regModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="reg-modal-overlay" id="modalOverlay"></div>
+  <div class="reg-modal-panel">
+
+    <button class="reg-modal-close" id="modalClose" aria-label="Close registration modal">✕</button>
+
+    <div class="reg-modal-hd">
+      <span class="sh-lbl">Registration</span>
+      <h2 class="reg-modal-title" id="modalTitle">Choose Your Registration Type</h2>
+      <p class="reg-modal-sub">Select the option that applies to you.</p>
+      <div class="reg-modal-div"></div>
+    </div>
+
+    <div class="reg-modal-cards">
+
+      <!-- STUDENT PASS -->
+      <div class="rmc rmc-student">
+        <span class="rmc-badge">50% Student Discount</span>
+        <div class="rmc-type">Student Pass</div>
+        <div class="rmc-price-wrap">
+          <span class="rmc-old"><sup>₹</sup>200</span>
+          <span class="rmc-new"><sup>₹</sup>100</span>
+        </div>
+        <p class="rmc-tag">Exclusive Student Pricing</p>
+        <ul class="rmc-list">
+          <li>Live Online Lecture Access</li>
+          <li>Exclusive Student Pricing</li>
+          <li>Certificate Available Upon Request</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog"
+           target="_blank" rel="noopener noreferrer" class="rmc-btn rmc-btn-fill">
+          Student Registration
+        </a>
+      </div>
+
+      <!-- GENERAL PASS -->
+      <div class="rmc">
+        <div class="rmc-type">General Pass</div>
+        <div class="rmc-price-wrap">
+          <span class="rmc-new"><sup>₹</sup>200</span>
+        </div>
+        <p class="rmc-tag">Open Registration</p>
+        <ul class="rmc-list">
+          <li>Live Online Lecture Access</li>
+          <li>Open Registration</li>
+          <li>Certificate Available Upon Request</li>
+        </ul>
+        <a href="https://cobaltbluefoundation.myinstamojo.com/product/when-gods-came-home/"
+           target="_blank" rel="noopener noreferrer" class="rmc-btn rmc-btn-ghost">
+          General Registration
+        </a>
+      </div>
+
+    </div><!-- /.reg-modal-cards -->
+  </div><!-- /.reg-modal-panel -->
+</div><!-- /.reg-modal -->
+
+
+<!-- NAV — data-reg="trigger" opens modal instead of navigating -->
 <nav class="nav" id="nav">
   <a href="#top" class="nav-logo">
     <img src="cbf-logo.png" alt="Cobalt Blue Foundation" class="nav-logo-img">
@@ -326,12 +506,10 @@ body.loaded .rev{opacity:1;transform:none}
       <small>Art · Culture · Heritage</small>
     </div>
   </a>
-  <a href="https://cobaltbluefoundation.myinstamojo.com/product/when-gods-came-home/" target="_blank" rel="noopener noreferrer" class="nav-btn">
-    Reserve Your Seat
-  </a>
+  <button data-reg="trigger" class="nav-btn">Reserve Your Seat</button>
 </nav>
 
-<!-- HERO — CHANGE 1: registration link updated -->
+<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-content">
     <img src="cbf-logo.png" alt="Cobalt Blue Foundation" class="hero-logo">
@@ -345,17 +523,25 @@ body.loaded .rev{opacity:1;transform:none}
       <div class="meta-item"><div class="meta-l">Format</div><div class="meta-v">Live via Zoom</div></div>
       <div class="meta-item"><div class="meta-l">Hosted By</div><div class="meta-v">Cobalt Blue Foundation</div></div>
     </div>
+    <!-- Hero pricing: both tiers at a glance -->
     <div class="hero-pricing">
       <div class="price-pill">
-        <div class="price-pill-t">Event Pass</div>
+        <div class="price-pill-t">Student Pass</div>
+        <span class="price-pill-old">₹200</span>
+        <div class="price-pill-v accent">₹100</div>
+        <div class="price-pill-n">50% Student Discount</div>
+      </div>
+      <div class="price-sep"></div>
+      <div class="price-pill">
+        <div class="price-pill-t">General Pass</div>
         <div class="price-pill-v">₹200</div>
-        <div class="price-pill-n">Certificate available upon request</div>
+        <div class="price-pill-n">Open Registration</div>
       </div>
       <div class="price-sep"></div>
       <div class="seats-tag">Limited Seats</div>
     </div>
     <div class="hero-actions">
-      <a href="https://cobaltbluefoundation.myinstamojo.com/product/when-gods-came-home/" target="_blank" rel="noopener noreferrer" class="btn-hero"><span>Reserve Your Seat</span></a>
+      <button data-reg="trigger" class="btn-hero"><span>Reserve Your Seat</span></button>
       <a href="#story" class="btn-ghost">Discover The Story</a>
     </div>
     <div class="scroll-cue"><div class="scroll-line"></div><span>Scroll</span></div>
@@ -385,7 +571,7 @@ body.loaded .rev{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- THE STORY — CHANGE 1: registration link updated -->
+<!-- THE STORY -->
 <section class="sec story-sec" id="story">
   <div class="story-bg">STORY</div>
   <div style="text-align:center;margin-bottom:72px" class="rev">
@@ -408,7 +594,8 @@ body.loaded .rev{opacity:1;transform:none}
     <p class="story-p lg">How did this happen?</p>
     <p class="story-p cen">That is the story we will explore.</p>
     <div style="text-align:center;margin-top:52px" class="story-p">
-      <a href="https://cobaltbluefoundation.myinstamojo.com/product/when-gods-came-home/" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 42px;border:2px solid var(--gold);color:var(--gold);text-decoration:none;font-family:var(--fb);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s" onmouseover="this.style.background='rgba(196,137,42,.12)'" onmouseout="this.style.background='transparent'">Reserve Your Seat</a>
+      <!-- Story inline CTA → opens modal -->
+      <button data-reg="trigger" style="display:inline-block;padding:14px 42px;border:2px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;font-family:var(--fb);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;transition:.3s" onmouseover="this.style.background='rgba(196,137,42,.12)'" onmouseout="this.style.background='transparent'">Reserve Your Seat</button>
     </div>
   </div>
 </section>
@@ -451,7 +638,7 @@ body.loaded .rev{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- ABOUT COBALT BLUE FOUNDATION -->
+<!-- ABOUT -->
 <section class="sec about-sec" id="about">
   <div class="about-grid">
     <div class="about-logo-wrap rev">
@@ -479,21 +666,14 @@ body.loaded .rev{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- FACILITATOR — CHANGES 2–6:
-     Removed co-founder card and all references to Ruchi Ruuh.
-     Section heading updated to "MEET THE FACILITATOR" with subtitle.
-     Single centered card; role changed from "Founder" to "Facilitator".
-     Bio replaced with updated copy.
-     Two-column grid replaced with single centered column. -->
+<!-- FACILITATOR -->
 <section class="sec team-sec" id="team">
-
   <div class="sh rev" style="text-align:center">
     <span class="sh-lbl" style="color:var(--gold)">The Facilitator</span>
     <h2 class="sh-ttl lt">Meet The Facilitator</h2>
     <p class="facilitator-sub">Author &bull; Storyteller &bull; Mythology Educator</p>
     <div class="sh-div" style="margin-top:18px"></div>
   </div>
-
   <div class="team-grid">
     <div class="team-card rev">
       <img src="founder.jpg" alt="Sundeep Verma" class="team-img" loading="lazy">
@@ -501,19 +681,14 @@ body.loaded .rev{opacity:1;transform:none}
         <div class="ti-role">Facilitator</div>
         <h3 class="ti-name">Sundeep Verma</h3>
         <div class="ti-desig">Storytelling · Mythology · Art Psychology</div>
-        <p class="ti-bio">
-          Sundeep Verma is an author, graphic novelist, educator, and internationally recognised storyteller whose work explores mythology, imagination, visual culture, and wellbeing. With leadership experience across global creative organisations and advanced study in Narrative Environment Design from Central Saint Martins, London, he has spent years helping audiences rediscover mythology as a living source of meaning, reflection, and personal growth.
-        </p>
-        <p class="ti-bio" style="margin-top:14px">
-          Through lectures, workshops, publications, and immersive learning experiences, he creates spaces where stories become tools for understanding culture, identity, and the human experience.
-        </p>
+        <p class="ti-bio">Sundeep Verma is an author, graphic novelist, educator, and internationally recognised storyteller whose work explores mythology, imagination, visual culture, and wellbeing. With leadership experience across global creative organisations and advanced study in Narrative Environment Design from Central Saint Martins, London, he has spent years helping audiences rediscover mythology as a living source of meaning, reflection, and personal growth.</p>
+        <p class="ti-bio" style="margin-top:14px">Through lectures, workshops, publications, and immersive learning experiences, he creates spaces where stories become tools for understanding culture, identity, and the human experience.</p>
       </div>
     </div>
   </div>
-
 </section>
 
-<!-- EVENT DETAILS — CHANGE 1: registration link updated -->
+<!-- EVENT DETAILS — CTA opens modal -->
 <section class="sec evt-sec" id="details">
   <span class="sh-lbl rev" style="display:block;text-align:center;margin-bottom:44px">The Details</span>
   <div class="museum-inv rev">
@@ -527,36 +702,62 @@ body.loaded .rev{opacity:1;transform:none}
       <div><div class="mi-item-l">Seats</div><div class="mi-item-v">Limited<br>by Intention</div></div>
     </div>
     <p class="mi-note">This event is designed to be intimate and focused. Once seats are filled, registration closes.</p>
-    <a href="https://cobaltbluefoundation.myinstamojo.com/product/when-gods-came-home/" target="_blank" rel="noopener noreferrer" class="btn-hero" style="display:inline-block;padding:15px 48px"><span>Reserve Your Seat</span></a>
+    <button data-reg="trigger" class="btn-hero" style="display:inline-block;padding:15px 48px"><span>Reserve Your Seat</span></button>
     <div class="orn" style="margin-top:28px">— ✦ Cobalt Blue Foundation ✦ —</div>
   </div>
 </section>
 
-<!-- REGISTRATION — CHANGE 1: registration link updated -->
+<!-- REGISTRATION / PRICING — direct links (user already sees both options) -->
 <section class="sec reg-sec" id="register">
   <div class="sh rev">
     <span class="sh-lbl">Secure Your Place</span>
     <h2 class="sh-ttl lt">Reserve Your Seat</h2>
     <div class="sh-div"></div>
-    <p style="font-family:var(--fh);font-style:italic;color:rgba(240,222,176,.55);max-width:480px;margin:16px auto 0;font-size:1.05rem">A single elegant pass for full access to the live online lecture.</p>
+    <p style="font-family:var(--fh);font-style:italic;color:rgba(240,222,176,.55);max-width:520px;margin:16px auto 0;font-size:1.05rem">Choose the pass that suits you. Both include full access to the live online lecture.</p>
   </div>
-  <div class="pricing-grid pricing-grid-single">
-    <div class="pc pc-only">
-      <div class="pc-type">Event Pass</div>
+
+  <div class="pricing-grid">
+
+    <!-- STUDENT PASS -->
+    <div class="pc pc-student rev">
+      <span class="pc-badge">50% Student Discount</span>
+      <div class="pc-type">Student Pass</div>
+      <div class="pc-price-wrap">
+        <span class="pc-price-old"><sup>₹</sup>200</span>
+        <span class="pc-price-new"><sup>₹</sup>100</span>
+      </div>
+      <ul class="pc-list">
+        <li>Live Online Lecture Access</li>
+        <li>Student Pricing</li>
+        <li>Certificate Available Upon Request</li>
+      </ul>
+      <p class="pc-note">&nbsp;</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_dJbIjnftG4ap2wfeWstyG6pOcIT5sF1m-RUFWhmTICVAQA/viewform?usp=dialog"
+         target="_blank" rel="noopener noreferrer" class="btn-reg">Student Registration</a>
+    </div>
+
+    <!-- GENERAL PASS -->
+    <div class="pc rev">
+      <div class="pc-type">General Pass</div>
       <div class="pc-amt"><sup>₹</sup>200</div>
       <ul class="pc-list">
-        <li>Access to the Live Online Lecture</li>
+        <li>Live Online Lecture Access</li>
+        <li>Open Registration</li>
+        <li>Certificate Available Upon Request</li>
       </ul>
-      <p class="pc-note">Certificate available upon request</p>
-      <a href="https://cobaltbluefoundation.myinstamojo.com/product/when-gods-came-home/" target="_blank" rel="noopener noreferrer" class="btn-reg">Reserve Your Seat</a>
+      <p class="pc-note">&nbsp;</p>
+      <a href="https://cobaltbluefoundation.myinstamojo.com/product/when-gods-came-home/"
+         target="_blank" rel="noopener noreferrer" class="btn-reg ol">General Registration</a>
     </div>
+
   </div>
+
   <div style="text-align:center;margin-top:8px" class="rev">
     <div class="seats-tag" style="display:inline-flex">Seats Are Limited By Intention</div>
   </div>
 </section>
 
-<!-- FINAL CTA — CHANGE 1: registration link updated -->
+<!-- FINAL CTA — opens modal -->
 <section class="fcta-sec" id="cta">
   <div class="fcta-glow"></div>
   <div style="position:relative;z-index:1">
@@ -564,12 +765,12 @@ body.loaded .rev{opacity:1;transform:none}
     <p class="fcta-q2 rev">Now discover it.</p>
     <h2 class="fcta-title rev">When <em>Gods</em><br>Came Home</h2>
     <div class="orn rev">— ✦ —</div>
-    <a href="https://cobaltbluefoundation.myinstamojo.com/product/when-gods-came-home/" target="_blank" rel="noopener noreferrer" class="btn-fcta rev" style="margin-top:28px"><span>Reserve Your Seat</span></a>
+    <button data-reg="trigger" class="btn-fcta rev" style="margin-top:28px"><span>Reserve Your Seat</span></button>
     <p class="fcta-meta rev">27 June 2026 · 4:00 PM IST · Live via Zoom · Cobalt Blue Foundation</p>
   </div>
 </section>
 
-<!-- FOOTER — CHANGE 1: registration link updated -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
     <div>
@@ -588,7 +789,8 @@ body.loaded .rev{opacity:1;transform:none}
         <li><a href="#story">The Story</a></li>
         <li><a href="#discover">What You'll Discover</a></li>
         <li><a href="#details">Event Details</a></li>
-        <li><a href="https://cobaltbluefoundation.myinstamojo.com/product/when-gods-came-home/" target="_blank" rel="noopener noreferrer">Register Now →</a></li>
+        <!-- Footer register link → opens modal -->
+        <li><a href="#" data-reg="trigger">Register Now →</a></li>
       </ul>
     </div>
     <div>
@@ -609,6 +811,51 @@ body.loaded .rev{opacity:1;transform:none}
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
+/* ============================================================
+   REGISTRATION MODAL
+   All elements with data-reg="trigger" open the modal.
+   Closes on: ✕ button · overlay click · Escape key.
+   Body scroll is locked while modal is open.
+   ============================================================ */
+(function(){
+  const modal   = document.getElementById('regModal');
+  const overlay = document.getElementById('modalOverlay');
+  const closeBtn= document.getElementById('modalClose');
+
+  function openModal(){
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Move focus to close button for accessibility
+    setTimeout(()=>closeBtn.focus(), 50);
+  }
+
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Attach to every trigger element
+  document.querySelectorAll('[data-reg="trigger"]').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  overlay.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // Prevent panel clicks from closing the modal
+  document.querySelector('.reg-modal-panel').addEventListener('click', e => e.stopPropagation());
+})();
+
+/* ============================================================
+   PAGE ANIMATIONS (unchanged)
+   ============================================================ */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('on', window.scrollY > 70));
 
@@ -622,7 +869,7 @@ document.querySelectorAll('.rev').forEach(el => {
 });
 
 gsap.from('.hero-content > *', { opacity: 0, y: 32, duration: .9, stagger: .13, ease: 'power3.out', delay: .3 });
-gsap.from('.hero-poster', { opacity: 0, scale: .92, duration: 1.6, ease: 'power3.out', delay: .9 });
+gsap.from('.hero-poster',      { opacity: 0, scale: .92, duration: 1.6, ease: 'power3.out', delay: .9 });
 
 gsap.fromTo('.why-card',
   { opacity: 0, y: 56 },
@@ -648,7 +895,6 @@ gsap.fromTo('.pc',
     scrollTrigger: { trigger: '.pricing-grid', start: 'top 80%' }
   }
 );
-
 document.querySelectorAll('.story-p').forEach(p => {
   gsap.fromTo(p,
     { opacity: 0, y: 28 },
@@ -657,9 +903,11 @@ document.querySelectorAll('.story-p').forEach(p => {
     }
   );
 });
+gsap.to('.hv-glow', { y: -70, ease: 'none',
+  scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+});
 
-gsap.to('.hv-glow', { y: -70, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-
+// Particles
 (function(){
   const c = document.getElementById('pts');
   if (!c) return;
@@ -673,9 +921,12 @@ gsap.to('.hv-glow', { y: -70, ease: 'none', scrollTrigger: { trigger: '.hero', s
   }
 })();
 
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
+    const id = a.getAttribute('href');
+    if (id === '#') return; // modal triggers handle their own preventDefault
+    const t = document.querySelector(id);
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
