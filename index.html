@@ -225,14 +225,35 @@ body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml
 
 /* WHY ATTEND */
 .why-sec{background:var(--parch-l)}
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px}
-.why-card{background:var(--dark-s);padding:46px 28px;text-align:center;transition:.4s;position:relative;overflow:hidden;cursor:default}
-.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:.4s}
-.why-card:hover{background:var(--dark)}
-.why-card:hover::before{transform:scaleX(1)}
-.wc-n{font-family:var(--fd);font-size:3rem;color:rgba(196,137,42,.12);font-weight:900;line-height:1;margin-bottom:14px}
-.wc-v{font-family:var(--fd);font-size:1.25rem;color:var(--gold);margin-bottom:10px}
-.wc-t{font-family:var(--fh);font-style:italic;font-size:.92rem;color:rgba(240,222,176,.65)}
+.why-list{
+  max-width:680px;
+  margin:0 auto;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.why-list li{
+  font-family:var(--fb);
+  font-size:clamp(1rem,1.5vw,1.12rem);
+  color:var(--brown-m);
+  line-height:1.75;
+  padding:18px 0;
+  border-bottom:1px solid rgba(92,42,16,.12);
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+}
+.why-list li:first-child{border-top:1px solid rgba(92,42,16,.12)}
+.why-list li::before{
+  content:'•';
+  color:var(--gold);
+  font-size:1.1rem;
+  flex-shrink:0;
+  line-height:1;
+  position:relative;
+  top:1px;
+}
 
 /* STORY */
 .story-sec{background:var(--dark);position:relative;overflow:hidden}
@@ -523,25 +544,7 @@ body.loaded .rev{opacity:1;transform:none}
       <div class="meta-item"><div class="meta-l">Format</div><div class="meta-v">Live via Zoom</div></div>
       <div class="meta-item"><div class="meta-l">Hosted By</div><div class="meta-v">Cobalt Blue Foundation</div></div>
     </div>
-    <!-- Hero pricing: both tiers at a glance -->
-    <div class="hero-pricing">
-      <div class="price-pill">
-        <div class="price-pill-t">Student Pass</div>
-        <span class="price-pill-old">₹200</span>
-        <div class="price-pill-v accent">₹100</div>
-        <div class="price-pill-n">50% Student Discount</div>
-      </div>
-      <div class="price-sep"></div>
-      <div class="price-pill">
-        <div class="price-pill-t">General Pass</div>
-        <div class="price-pill-v">₹200</div>
-        <div class="price-pill-n">Open Registration</div>
-      </div>
-      <div class="price-sep"></div>
-      <div class="seats-tag">Limited Seats</div>
-    </div>
     <div class="hero-actions">
-      <button data-reg="trigger" class="btn-hero"><span>Reserve Your Seat</span></button>
       <a href="#story" class="btn-ghost">Discover The Story</a>
     </div>
     <div class="scroll-cue"><div class="scroll-line"></div><span>Scroll</span></div>
@@ -562,13 +565,13 @@ body.loaded .rev{opacity:1;transform:none}
     <h2 class="sh-ttl">Why Attend This Lecture</h2>
     <div class="ornline"><span class="ornline-s">✦</span></div>
   </div>
-  <div class="why-grid">
-    <div class="why-card"><div class="wc-n">01</div><div class="wc-v">Discover</div><p class="wc-t">How images shape memory and collective consciousness</p></div>
-    <div class="why-card"><div class="wc-n">02</div><div class="wc-v">Explore</div><p class="wc-t">The deep relationship between art and cultural identity</p></div>
-    <div class="why-card"><div class="wc-n">03</div><div class="wc-v">Understand</div><p class="wc-t">How visual traditions travel across time and geography</p></div>
-    <div class="why-card"><div class="wc-n">04</div><div class="wc-v">Learn</div><p class="wc-t">Through an immersive, narrative-driven lecture experience</p></div>
-    <div class="why-card"><div class="wc-n">05</div><div class="wc-v">Reflect</div><p class="wc-t">On identity, heritage, and our collective imagination</p></div>
-  </div>
+  <ul class="why-list">
+    <li>Discover how images shape memory and collective consciousness.</li>
+    <li>Explore the deep relationship between art and cultural identity.</li>
+    <li>Understand how visual traditions travel across time and geography.</li>
+    <li>Learn through an immersive, narrative-driven lecture experience.</li>
+    <li>Reflect on identity, heritage, and our collective imagination.</li>
+  </ul>
 </section>
 
 <!-- THE STORY -->
